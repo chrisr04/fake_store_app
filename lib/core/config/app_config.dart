@@ -13,9 +13,9 @@ class AppConfig {
   static GlobalKey<NavigatorState> menuNavigatorKey =
       GlobalKey<NavigatorState>();
 
-  late UserEntity _user;
+  UserEntity? _user;
 
-  UserEntity get currentUser => _user;
+  UserEntity? get currentUser => _user;
 
   void setLoggedUser(UserEntity user) {
     _user = user;

@@ -107,7 +107,7 @@ class _MenuPageState extends State<MenuPage> {
         context.read<CartViewModel>().onCreateCart(
               CartEntity(
                 id: 0,
-                userId: user.id,
+                userId: user?.id ?? 0,
                 date: DateTime.now(),
                 products: [],
               ),

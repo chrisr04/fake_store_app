@@ -6,6 +6,9 @@ class AddressRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = context.read<AppConfig>().currentUser;
+    final address = user != null
+        ? '${user.address.number} ${user.address.street}, ${user.address.city}, ${user.address.zipcode}'
+        : '';
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -16,7 +19,7 @@ class AddressRow extends StatelessWidget {
         const FakeSpacerXS(axis: FakeSpacerAxis.x),
         Flexible(
           child: FakeTextLarge(
-            '${user.address.number} ${user.address.street}, ${user.address.city}, ${user.address.zipcode}',
+            address,
             color: Theme.of(context).colorScheme.onSurfaceVariant,
             weight: FontWeight.w600,
             textOverflow: TextOverflow.ellipsis,
