@@ -29,10 +29,11 @@ class HorizontalProductList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: FakeSpacing.md,
+            ).copyWith(
+              bottom: FakeSpacing.sl,
             ),
             child: FakeTextHeading6(title),
           ),
-          const FakeSpacerS(),
           SizedBox(
             width: double.infinity,
             height: 320.0,
