@@ -38,10 +38,10 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
         hintText: StringValue.searchInFakeStore,
         showBackButton: true,
         readOnly: true,
-        onTap: () => Navigator.of(context).pushNamed(AppRoutes.search),
+        onTap: () => FakeNavigator.menu.pushNamed(AppRoutes.search),
       ),
-      body: Column(
-        children: [
+      body: CustomScrollView(
+        slivers: [
           CategoryHeader(
             category: widget.category,
           ),

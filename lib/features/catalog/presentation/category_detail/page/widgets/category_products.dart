@@ -6,16 +6,17 @@ class CategoryProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<CategoryDetailViewModel>().state;
-    return Expanded(
-      child: switch (state.type) {
-        CategoryDetailStateType.loaded => VerticalProductList(
-            products: state.products,
-          ),
-        CategoryDetailStateType.error => ErrorMessage(error: state.error),
-        _ => const Center(
+    return switch (state.type) {
+      CategoryDetailStateType.loaded => VerticalProductSliverList(
+          products: state.products,
+        ),
+      CategoryDetailStateType.error => ErrorMessage(error: state.error),
+      _ => const SliverFillRemaining(
+          hasScrollBody: false,
+          child: Center(
             child: CircularProgressIndicator(),
           ),
-      },
-    );
+        ),
+    };
   }
 }
