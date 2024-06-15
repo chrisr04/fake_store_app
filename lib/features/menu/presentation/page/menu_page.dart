@@ -20,8 +20,10 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   void initState() {
-    _createCart();
-    cartViewModel.addListener(_cartViewModelListener);
+    Future.microtask(() {
+      cartViewModel.addListener(_cartViewModelListener);
+      _createCart();
+    });
     super.initState();
   }
 
@@ -101,18 +103,14 @@ class _MenuPageState extends State<MenuPage> {
   }
 
   void _createCart() {
-    Future.microtask(
-      () {
-        final user = context.read<AppConfig>().currentUser;
-        context.read<CartViewModel>().onCreateCart(
-              CartEntity(
-                id: 0,
-                userId: user?.id ?? 0,
-                date: DateTime.now(),
-                products: [],
-              ),
-            );
-      },
+    final user = context.read<AppConfig>().currentUser;
+    cartViewModel.onCreateCart(
+      CartEntity(
+        id: 0,
+        userId: user?.id ?? 0,
+        date: DateTime.now(),
+        products: [],
+      ),
     );
   }
 
