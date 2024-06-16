@@ -40,7 +40,7 @@ class RouteGenerator {
           AppRoutes.categoryDetail => CategoryDetailPage(
               category: getArgs<String>(settings.arguments),
             ),
-          _ => const NotFoundPage(),
+          _ => const NotFoundPage(navigateFromMenu: true),
         },
         transitionsBuilder: (context, opacity, _, child) {
           return FadeTransition(
