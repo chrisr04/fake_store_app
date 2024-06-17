@@ -53,8 +53,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v0.0.2"
-      resolved-ref: "1b241c2b9b86c102ca7225565d2ebee91b5b07c9"
+      ref: "v0.0.3"
+      resolved-ref: dd04c41d8c59b5cd25a8c202fe917bcaf325cbf4
       url: "https://github.com/chrisr04/fake_api"
     source: git
     version: "0.0.1"
@@ -70,8 +70,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v0.0.3"
-      resolved-ref: a71d41035918e7d45528dbfbc08f88af3e845129
+      ref: "v0.0.4"
+      resolved-ref: "0b359d2ed4373ca64510c3917dca9697459de165"
       url: "https://github.com/chrisr04/fake_store_ds"
     source: git
     version: "0.0.1"

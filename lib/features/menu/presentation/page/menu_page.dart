@@ -79,16 +79,16 @@ class _MenuPageState extends State<MenuPage> {
   void _navigateToPage(int index) {
     switch (index) {
       case 0:
-        FakeNavigator.menu.pushNamed(AppRoutes.home);
+        FakeNavigator.menu.pushReplacementNamed(AppRoutes.home);
         break;
       case 1:
-        FakeNavigator.menu.pushNamed(AppRoutes.categories);
+        FakeNavigator.menu.pushReplacementNamed(AppRoutes.categories);
         break;
       case 2:
-        FakeNavigator.menu.pushNamed(AppRoutes.support);
+        FakeNavigator.menu.pushReplacementNamed(AppRoutes.support);
         break;
       case 3:
-        FakeNavigator.menu.pushNamed(AppRoutes.cart);
+        FakeNavigator.menu.pushReplacementNamed(AppRoutes.cart);
         break;
     }
   }
