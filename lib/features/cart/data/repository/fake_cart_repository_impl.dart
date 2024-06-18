@@ -51,14 +51,4 @@ class FakeCartRepositoryImpl implements FakeCartRepository {
       return Left(RemoteFailure(e.toString()));
     }
   }
-
-  @override
-  Future<Either<Failure, CartEntity>> updateCart(CartEntity cart) async {
-    try {
-      final cartSent = await _remoteDataSource.updateCart(cart);
-      return Right(cartSent);
-    } catch (e) {
-      return Left(RemoteFailure(e.toString()));
-    }
-  }
 }

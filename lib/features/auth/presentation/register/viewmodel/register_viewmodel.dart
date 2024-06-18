@@ -9,7 +9,8 @@ class RegisterViewModel with ChangeNotifier {
   RegisterViewModel(this._repository);
 
   final FakeAuthRepository _repository;
-  RegisterState state = RegisterState();
+  RegisterState _state = RegisterState();
+  RegisterState get state => _state;
 
   void onChangedField({
     required RegisterFormField field,
@@ -17,29 +18,29 @@ class RegisterViewModel with ChangeNotifier {
   }) {
     switch (field) {
       case RegisterFormField.name:
-        state = state.copyWith(name: value);
+        _state = _state.copyWith(name: value);
         break;
       case RegisterFormField.lastname:
-        state = state.copyWith(lastname: value);
+        _state = _state.copyWith(lastname: value);
         break;
       case RegisterFormField.email:
-        state = state.copyWith(email: value);
+        _state = _state.copyWith(email: value);
         break;
       case RegisterFormField.phone:
-        state = state.copyWith(name: value);
+        _state = _state.copyWith(name: value);
         break;
       case RegisterFormField.username:
-        state = state.copyWith(username: value);
+        _state = _state.copyWith(username: value);
         break;
       case RegisterFormField.password:
-        state = state.copyWith(password: value);
+        _state = _state.copyWith(password: value);
         break;
     }
     notifyListeners();
   }
 
   void onRegister(UserEntity user) async {
-    state = state.copyWith(type: RegisterStateType.loading);
+    _state = _state.copyWith(type: RegisterStateType.loading);
     notifyListeners();
 
     final failureOrSigned = await _repository.signUp(
@@ -52,7 +53,7 @@ class RegisterViewModel with ChangeNotifier {
 
     if (failureOrSigned.isSome()) {
       final failure = signUpResult as Failure;
-      state = state.copyWith(
+      _state = _state.copyWith(
         error: failure.message,
         type: RegisterStateType.error,
       );
@@ -64,13 +65,13 @@ class RegisterViewModel with ChangeNotifier {
 
     failureOrUsers.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           type: RegisterStateType.error,
           error: failure.message,
         );
       },
       (users) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           user: users.first,
           type: RegisterStateType.signedUp,
         );

@@ -33,7 +33,4 @@ class FakeCartRemoteDataSource {
     _currentCart.products[index] = CartProductModel.fromDomain(cartProduct);
     return _currentCart;
   }
-
-  Future<CartEntity> updateCart(CartEntity cart) =>
-      _client.carts.updateCart(cart);
 }

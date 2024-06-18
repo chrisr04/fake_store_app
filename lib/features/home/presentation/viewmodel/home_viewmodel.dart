@@ -10,10 +10,11 @@ class HomeViewModel with ChangeNotifier {
   }
 
   final FakeHomeRepository _repository;
-  HomeState state = const HomeState();
+  HomeState _state = const HomeState();
+  HomeState get state => _state;
 
   void onLoadSections() async {
-    state = state.copyWith(type: HomeStateType.loading);
+    _state = _state.copyWith(type: HomeStateType.loading);
     notifyListeners();
 
     final failureOrPromotions = await _repository.getPromotions();
@@ -24,7 +25,8 @@ class HomeViewModel with ChangeNotifier {
 
     if (failureOrPromotions.isLeft()) {
       final failure = promotionsResult as Failure;
-      state = state.copyWith(error: failure.message, type: HomeStateType.error);
+      _state =
+          _state.copyWith(error: failure.message, type: HomeStateType.error);
       notifyListeners();
       return;
     }
@@ -37,7 +39,8 @@ class HomeViewModel with ChangeNotifier {
 
     if (failureOrMostBought.isLeft()) {
       final failure = mostBoughtResult as Failure;
-      state = state.copyWith(error: failure.message, type: HomeStateType.error);
+      _state =
+          _state.copyWith(error: failure.message, type: HomeStateType.error);
       notifyListeners();
       return;
     }
@@ -50,7 +53,8 @@ class HomeViewModel with ChangeNotifier {
 
     if (failureOrRecommended.isLeft()) {
       final failure = recommendedResult as Failure;
-      state = state.copyWith(error: failure.message, type: HomeStateType.error);
+      _state =
+          _state.copyWith(error: failure.message, type: HomeStateType.error);
       notifyListeners();
       return;
     }
@@ -63,12 +67,13 @@ class HomeViewModel with ChangeNotifier {
 
     if (failureOrRecently.isLeft()) {
       final failure = recentlyResult as Failure;
-      state = state.copyWith(error: failure.message, type: HomeStateType.error);
+      _state =
+          _state.copyWith(error: failure.message, type: HomeStateType.error);
       notifyListeners();
       return;
     }
 
-    state = state.copyWith(
+    _state = _state.copyWith(
       promotions: promotionsResult as List<ProductEntity>,
       mostBought: mostBoughtResult as List<ProductEntity>,
       recommended: recommendedResult as List<ProductEntity>,

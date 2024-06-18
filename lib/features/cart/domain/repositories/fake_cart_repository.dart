@@ -8,5 +8,4 @@ abstract class FakeCartRepository {
   Either<Failure, CartEntity> updateProductQuantity(
     CartProductEntity cartProduct,
   );
-  Future<Either<Failure, CartEntity>> updateCart(CartEntity cart);
 }

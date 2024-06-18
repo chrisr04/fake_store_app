@@ -8,21 +8,22 @@ class CategoryDetailViewModel with ChangeNotifier {
   CategoryDetailViewModel(this._repository);
 
   final FakeCatalogRepository _repository;
-  CategoryDetailState state = const CategoryDetailState();
+  CategoryDetailState _state = const CategoryDetailState();
+  CategoryDetailState get state => _state;
 
   void onLoadProducts(String category) async {
-    state = state.copyWith(type: CategoryDetailStateType.loading);
+    _state = _state.copyWith(type: CategoryDetailStateType.loading);
     notifyListeners();
     final failureOrProducts = await _repository.getCategoryProducts(category);
     failureOrProducts.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           error: failure.message,
           type: CategoryDetailStateType.error,
         );
       },
       (products) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           products: products,
           type: CategoryDetailStateType.loaded,
         );

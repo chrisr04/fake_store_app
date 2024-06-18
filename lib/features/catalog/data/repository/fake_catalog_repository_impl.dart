@@ -19,14 +19,4 @@ class FakeCatalogRepositoryImpl implements FakeCatalogRepository {
       return Left(RemoteFailure(e.toString()));
     }
   }
-
-  @override
-  Future<Either<Failure, ProductEntity>> getProductDetail(int id) async {
-    try {
-      final productDetail = await _remoteDataSource.getProductDetail(id);
-      return Right(productDetail);
-    } catch (e) {
-      return Left(RemoteFailure(e.toString()));
-    }
-  }
 }

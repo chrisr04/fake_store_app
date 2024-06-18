@@ -8,7 +8,6 @@ class FakeSearchRemoteDataSource {
   Future<List<ProductEntity>> searchProducts(String query) async {
     final products = await _client.products.getProducts();
     final lowerQuery = query.toLowerCase();
-
     final result = products.where(
       (product) =>
           product.title.toLowerCase().contains(lowerQuery) ||

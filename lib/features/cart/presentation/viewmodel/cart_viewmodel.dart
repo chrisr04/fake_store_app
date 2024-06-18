@@ -8,10 +8,11 @@ class CartViewModel with ChangeNotifier {
   CartViewModel(this._repository);
 
   final FakeCartRepository _repository;
-  CartState state = const CartState();
+  CartState _state = const CartState();
+  CartState get state => _state;
 
   bool isProductAdded(int productId) {
-    final isAdded = state.cart?.products.any(
+    final isAdded = _state.cart?.products.any(
       (product) => product.productId == productId,
     );
     return isAdded ?? false;
@@ -21,13 +22,13 @@ class CartViewModel with ChangeNotifier {
     final failureOrCreated = await _repository.createCart(cart);
     failureOrCreated.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           error: failure.message,
           type: CartStateType.error,
         );
       },
       (cart) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           cart: cart,
           type: CartStateType.created,
         );
@@ -37,19 +38,19 @@ class CartViewModel with ChangeNotifier {
   }
 
   void onAddProduct(CartProductEntity cartProduct) {
-    if (state.cart == null) return;
+    if (_state.cart == null) return;
 
     final failureOrAdded = _repository.addProduct(cartProduct);
 
     failureOrAdded.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           error: failure.message,
           type: CartStateType.error,
         );
       },
       (cart) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           cart: cart,
           type: CartStateType.productAdded,
         );
@@ -59,19 +60,19 @@ class CartViewModel with ChangeNotifier {
   }
 
   void onRemoveProduct(int productId) {
-    if (state.cart == null) return;
+    if (_state.cart == null) return;
 
     final failureOrRemoved = _repository.removeProduct(productId);
 
     failureOrRemoved.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           error: failure.message,
           type: CartStateType.error,
         );
       },
       (cart) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           cart: cart,
           type: CartStateType.productRemoved,
         );
@@ -81,19 +82,19 @@ class CartViewModel with ChangeNotifier {
   }
 
   void onUpdateProductQuantity(CartProductEntity cartProduct) {
-    if (state.cart == null) return;
+    if (_state.cart == null) return;
 
     final failureOrUpdated = _repository.updateProductQuantity(cartProduct);
 
     failureOrUpdated.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           error: failure.message,
           type: CartStateType.error,
         );
       },
       (cart) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           cart: cart,
           type: CartStateType.productUpdated,
         );

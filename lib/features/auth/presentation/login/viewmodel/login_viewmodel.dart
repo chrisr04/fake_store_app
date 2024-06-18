@@ -8,10 +8,11 @@ class LoginViewModel with ChangeNotifier {
   LoginViewModel(this._repository);
 
   final FakeAuthRepository _repository;
-  LoginState state = LoginState();
+  LoginState _state = LoginState();
+  LoginState get state => _state;
 
   void onChangeUserName(String username) {
-    state = state.copyWith(
+    _state = _state.copyWith(
       username: username,
       type: LoginStateType.initial,
     );
@@ -19,7 +20,7 @@ class LoginViewModel with ChangeNotifier {
   }
 
   void onChangePassword(String password) {
-    state = state.copyWith(
+    _state = _state.copyWith(
       password: password,
       type: LoginStateType.initial,
     );
@@ -27,11 +28,11 @@ class LoginViewModel with ChangeNotifier {
   }
 
   void onLogIn() async {
-    state = state.copyWith(type: LoginStateType.loading);
+    _state = _state.copyWith(type: LoginStateType.loading);
     notifyListeners();
     final failureOrToken = await _repository.logIn(
-      username: state.username,
-      password: state.password,
+      username: _state.username,
+      password: _state.password,
     );
     final tokenResult = failureOrToken.fold(
       (failure) => failure,
@@ -40,7 +41,7 @@ class LoginViewModel with ChangeNotifier {
 
     if (failureOrToken.isLeft()) {
       final failure = tokenResult as Failure;
-      state = state.copyWith(
+      _state = _state.copyWith(
         error: failure.message,
         type: LoginStateType.error,
       );
@@ -52,18 +53,18 @@ class LoginViewModel with ChangeNotifier {
 
     failureOrUsers.fold(
       (failure) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           type: LoginStateType.error,
           error: failure.message,
         );
       },
       (users) {
         final loggedUser =
-            users.where((user) => user.username == state.username);
+            users.where((user) => user.username == _state.username);
         if (loggedUser.isEmpty) {
-          state = state.copyWith(type: LoginStateType.notFound);
+          _state = _state.copyWith(type: LoginStateType.notFound);
         } else {
-          state = state.copyWith(
+          _state = _state.copyWith(
             user: loggedUser.first,
             type: LoginStateType.loggedIn,
           );
