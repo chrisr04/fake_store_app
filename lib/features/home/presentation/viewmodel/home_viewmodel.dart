@@ -18,38 +18,31 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
 
     final failureOrProducts = await _repository.getAllProducts();
-    final result = failureOrProducts.fold(
-      (failure) => failure,
-      (promotion) => promotion,
-    );
+    failureOrProducts.fold(
+      (failure) {
+        _state = _state.copyWith(
+          error: failure.message,
+          type: HomeStateType.error,
+        );
+      },
+      (products) {
+        products.sort((p1, p2) => p1.price.compareTo(p2.price));
+        final promotions = products.take(7).toList();
+        products.sort((p1, p2) => p1.rating.count.compareTo(p2.rating.count));
+        final mostBought = products.take(7).toList();
+        products.sort((p1, p2) => p2.rating.rate.compareTo(p1.rating.rate));
+        final recommended = products.take(7).toList();
+        products.sort((p1, p2) => p2.title.compareTo(p1.title));
+        final recentlyAdded = products.take(7).toList();
 
-    if (failureOrProducts.isLeft()) {
-      final failure = result as Failure;
-      _state = _state.copyWith(
-        error: failure.message,
-        type: HomeStateType.error,
-      );
-      notifyListeners();
-      return;
-    }
-
-    final products = result as List<ProductEntity>;
-
-    products.sort((p1, p2) => p1.price.compareTo(p2.price));
-    final promotions = products.take(7).toList();
-    products.sort((p1, p2) => p1.rating.count.compareTo(p2.rating.count));
-    final mostBought = products.take(7).toList();
-    products.sort((p1, p2) => p2.rating.rate.compareTo(p1.rating.rate));
-    final recommended = products.take(7).toList();
-    products.sort((p1, p2) => p2.title.compareTo(p1.title));
-    final recentlyAdded = products.take(7).toList();
-
-    _state = _state.copyWith(
-      promotions: promotions,
-      mostBought: mostBought,
-      recommended: recommended,
-      recentlyAdded: recentlyAdded,
-      type: HomeStateType.loaded,
+        _state = _state.copyWith(
+          promotions: promotions,
+          mostBought: mostBought,
+          recommended: recommended,
+          recentlyAdded: recentlyAdded,
+          type: HomeStateType.loaded,
+        );
+      },
     );
     notifyListeners();
   }
