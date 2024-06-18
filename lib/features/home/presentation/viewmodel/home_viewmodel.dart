@@ -25,8 +25,10 @@ class HomeViewModel with ChangeNotifier {
 
     if (failureOrProducts.isLeft()) {
       final failure = result as Failure;
-      _state =
-          _state.copyWith(error: failure.message, type: HomeStateType.error);
+      _state = _state.copyWith(
+        error: failure.message,
+        type: HomeStateType.error,
+      );
       notifyListeners();
       return;
     }
