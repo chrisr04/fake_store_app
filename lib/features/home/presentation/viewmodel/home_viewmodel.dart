@@ -17,67 +17,36 @@ class HomeViewModel with ChangeNotifier {
     _state = _state.copyWith(type: HomeStateType.loading);
     notifyListeners();
 
-    final failureOrPromotions = await _repository.getPromotions();
-    final promotionsResult = failureOrPromotions.fold(
+    final failureOrProducts = await _repository.getAllProducts();
+    final result = failureOrProducts.fold(
       (failure) => failure,
       (promotion) => promotion,
     );
 
-    if (failureOrPromotions.isLeft()) {
-      final failure = promotionsResult as Failure;
+    if (failureOrProducts.isLeft()) {
+      final failure = result as Failure;
       _state =
           _state.copyWith(error: failure.message, type: HomeStateType.error);
       notifyListeners();
       return;
     }
 
-    final failureOrMostBought = await _repository.getMostBought();
-    final mostBoughtResult = failureOrMostBought.fold(
-      (failure) => failure,
-      (mostBought) => mostBought,
-    );
+    final products = result as List<ProductEntity>;
 
-    if (failureOrMostBought.isLeft()) {
-      final failure = mostBoughtResult as Failure;
-      _state =
-          _state.copyWith(error: failure.message, type: HomeStateType.error);
-      notifyListeners();
-      return;
-    }
-
-    final failureOrRecommended = await _repository.getRecommended();
-    final recommendedResult = failureOrRecommended.fold(
-      (failure) => failure,
-      (recommended) => recommended,
-    );
-
-    if (failureOrRecommended.isLeft()) {
-      final failure = recommendedResult as Failure;
-      _state =
-          _state.copyWith(error: failure.message, type: HomeStateType.error);
-      notifyListeners();
-      return;
-    }
-
-    final failureOrRecently = await _repository.getRecentlyAdded();
-    final recentlyResult = failureOrRecently.fold(
-      (failure) => failure,
-      (recently) => recently,
-    );
-
-    if (failureOrRecently.isLeft()) {
-      final failure = recentlyResult as Failure;
-      _state =
-          _state.copyWith(error: failure.message, type: HomeStateType.error);
-      notifyListeners();
-      return;
-    }
+    products.sort((p1, p2) => p1.price.compareTo(p2.price));
+    final promotions = products.take(7).toList();
+    products.sort((p1, p2) => p1.rating.count.compareTo(p2.rating.count));
+    final mostBought = products.take(7).toList();
+    products.sort((p1, p2) => p2.rating.rate.compareTo(p1.rating.rate));
+    final recommended = products.take(7).toList();
+    products.sort((p1, p2) => p2.title.compareTo(p1.title));
+    final recentlyAdded = products.take(7).toList();
 
     _state = _state.copyWith(
-      promotions: promotionsResult as List<ProductEntity>,
-      mostBought: mostBoughtResult as List<ProductEntity>,
-      recommended: recommendedResult as List<ProductEntity>,
-      recentlyAdded: recentlyResult as List<ProductEntity>,
+      promotions: promotions,
+      mostBought: mostBought,
+      recommended: recommended,
+      recentlyAdded: recentlyAdded,
       type: HomeStateType.loaded,
     );
     notifyListeners();

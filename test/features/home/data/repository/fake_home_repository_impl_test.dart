@@ -32,14 +32,14 @@ void main() {
     );
   });
 
-  group('FakeHomeRepositoryImpl getPromotions', () {
+  group('FakeHomeRepositoryImpl getAllProducts', () {
     test(
       'should return a Right(List<ProductEntity>) when request is success',
       () async {
-        when(() => dataSource.getPromotions())
+        when(() => dataSource.getAllProducts())
             .thenAnswer((_) async => products);
 
-        final result = await repository.getPromotions();
+        final result = await repository.getAllProducts();
 
         expect(result, isA<Right>());
         expect((result as Right).value, isA<List<ProductEntity>>());
@@ -49,94 +49,10 @@ void main() {
     test(
       'should throws a Left(RemoteFailure) when request is failure',
       () async {
-        when(() => dataSource.getPromotions())
+        when(() => dataSource.getAllProducts())
             .thenThrow(ProductControllerException('Invalid request'));
 
-        final result = await repository.getPromotions();
-
-        expect(result, isA<Left>());
-        expect((result as Left).value, isA<RemoteFailure>());
-      },
-    );
-  });
-
-  group('FakeHomeRepositoryImpl getMostBought', () {
-    test(
-      'should return a Right(List<ProductEntity>) when request is success',
-      () async {
-        when(() => dataSource.getMostBought())
-            .thenAnswer((_) async => products);
-
-        final result = await repository.getMostBought();
-
-        expect(result, isA<Right>());
-        expect((result as Right).value, isA<List<ProductEntity>>());
-      },
-    );
-
-    test(
-      'should throws a Left(RemoteFailure) when request is failure',
-      () async {
-        when(() => dataSource.getMostBought())
-            .thenThrow(ProductControllerException('Invalid request'));
-
-        final result = await repository.getMostBought();
-
-        expect(result, isA<Left>());
-        expect((result as Left).value, isA<RemoteFailure>());
-      },
-    );
-  });
-
-  group('FakeHomeRepositoryImpl getRecommended', () {
-    test(
-      'should return a Right(List<ProductEntity>) when request is success',
-      () async {
-        when(() => dataSource.getRecommended())
-            .thenAnswer((_) async => products);
-
-        final result = await repository.getRecommended();
-
-        expect(result, isA<Right>());
-        expect((result as Right).value, isA<List<ProductEntity>>());
-      },
-    );
-
-    test(
-      'should throws a Left(RemoteFailure) when request is failure',
-      () async {
-        when(() => dataSource.getRecommended())
-            .thenThrow(ProductControllerException('Invalid request'));
-
-        final result = await repository.getRecommended();
-
-        expect(result, isA<Left>());
-        expect((result as Left).value, isA<RemoteFailure>());
-      },
-    );
-  });
-
-  group('FakeHomeRepositoryImpl getRecentlyAdded', () {
-    test(
-      'should return a Right(List<ProductEntity>) when request is success',
-      () async {
-        when(() => dataSource.getRecentlyAdded())
-            .thenAnswer((_) async => products);
-
-        final result = await repository.getRecentlyAdded();
-
-        expect(result, isA<Right>());
-        expect((result as Right).value, isA<List<ProductEntity>>());
-      },
-    );
-
-    test(
-      'should throws a Left(RemoteFailure) when request is failure',
-      () async {
-        when(() => dataSource.getRecentlyAdded())
-            .thenThrow(ProductControllerException('Invalid request'));
-
-        final result = await repository.getRecentlyAdded();
+        final result = await repository.getAllProducts();
 
         expect(result, isA<Left>());
         expect((result as Left).value, isA<RemoteFailure>());

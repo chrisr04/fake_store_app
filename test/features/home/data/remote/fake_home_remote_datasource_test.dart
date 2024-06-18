@@ -36,14 +36,14 @@ void main() {
     );
   });
 
-  group('FakeHomeRemoteDataSource getPromotions', () {
+  group('FakeHomeRemoteDataSource getAllProducts', () {
     test(
       'should return a List<ProductEntity> when request is success',
       () async {
         when(() => client.products.getProducts())
             .thenAnswer((_) async => products);
 
-        final response = await dataSource.getPromotions();
+        final response = await dataSource.getAllProducts();
 
         expect(response, isA<List<ProductEntity>>());
       },
@@ -56,88 +56,7 @@ void main() {
             .thenThrow(ProductControllerException('Invalid request'));
 
         expect(
-          () => dataSource.getPromotions(),
-          throwsA(isA<FakeApiControllerException>()),
-        );
-      },
-    );
-  });
-
-  group('FakeHomeRemoteDataSource getMostBought', () {
-    test(
-      'should return a List<ProductEntity> when request is success',
-      () async {
-        when(() => client.products.getProducts())
-            .thenAnswer((_) async => products);
-
-        final response = await dataSource.getMostBought();
-
-        expect(response, isA<List<ProductEntity>>());
-      },
-    );
-
-    test(
-      'should throws a FakeApiControllerException when request is failure',
-      () async {
-        when(() => client.products.getProducts())
-            .thenThrow(ProductControllerException('Invalid request'));
-
-        expect(
-          () => dataSource.getMostBought(),
-          throwsA(isA<FakeApiControllerException>()),
-        );
-      },
-    );
-  });
-
-  group('FakeHomeRemoteDataSource getRecommended', () {
-    test(
-      'should return a List<ProductEntity> when request is success',
-      () async {
-        when(() => client.products.getProducts())
-            .thenAnswer((_) async => products);
-
-        final response = await dataSource.getRecommended();
-
-        expect(response, isA<List<ProductEntity>>());
-      },
-    );
-
-    test(
-      'should throws a FakeApiControllerException when request is failure',
-      () async {
-        when(() => client.products.getProducts())
-            .thenThrow(ProductControllerException('Invalid request'));
-
-        expect(
-          () => dataSource.getRecommended(),
-          throwsA(isA<FakeApiControllerException>()),
-        );
-      },
-    );
-  });
-
-  group('FakeHomeRemoteDataSource getRecentlyAdded', () {
-    test(
-      'should return a List<ProductEntity> when request is success',
-      () async {
-        when(() => client.products.getProducts(params: any(named: 'params')))
-            .thenAnswer((_) async => products);
-
-        final response = await dataSource.getRecentlyAdded();
-
-        expect(response, isA<List<ProductEntity>>());
-      },
-    );
-
-    test(
-      'should throws a FakeApiControllerException when request is failure',
-      () async {
-        when(() => client.products.getProducts(params: any(named: 'params')))
-            .thenThrow(ProductControllerException('Invalid request'));
-
-        expect(
-          () => dataSource.getRecentlyAdded(),
+          () => dataSource.getAllProducts(),
           throwsA(isA<FakeApiControllerException>()),
         );
       },

@@ -10,7 +10,7 @@ import 'package:fake_store_app/features/search/search.dart';
 import 'package:fake_store_app/features/support/support.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 
-class RouteGenerator {
+abstract class RouteGenerator {
   static PageRoute<dynamic> onGenerateRoute(RouteSettings settings) =>
       MaterialPageRoute(
         settings: settings,

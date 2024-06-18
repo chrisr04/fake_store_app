@@ -9,39 +9,9 @@ class FakeHomeRepositoryImpl implements FakeHomeRepository {
   final FakeHomeRemoteDataSource _remoteDataSource;
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getMostBought() async {
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts() async {
     try {
-      final products = await _remoteDataSource.getMostBought();
-      return Right(products);
-    } catch (e) {
-      return Left(RemoteFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<ProductEntity>>> getPromotions() async {
-    try {
-      final products = await _remoteDataSource.getPromotions();
-      return Right(products);
-    } catch (e) {
-      return Left(RemoteFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<ProductEntity>>> getRecentlyAdded() async {
-    try {
-      final products = await _remoteDataSource.getRecentlyAdded();
-      return Right(products);
-    } catch (e) {
-      return Left(RemoteFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<ProductEntity>>> getRecommended() async {
-    try {
-      final products = await _remoteDataSource.getRecommended();
+      final products = await _remoteDataSource.getAllProducts();
       return Right(products);
     } catch (e) {
       return Left(RemoteFailure(e.toString()));

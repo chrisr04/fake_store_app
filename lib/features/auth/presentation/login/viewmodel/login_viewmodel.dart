@@ -27,7 +27,7 @@ class LoginViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void onLogIn() async {
+  Future<void> onLogIn() async {
     _state = _state.copyWith(type: LoginStateType.loading);
     notifyListeners();
     final failureOrToken = await _repository.logIn(

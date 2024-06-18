@@ -1,6 +1,4 @@
-class AppRoutes {
-  AppRoutes._();
-
+abstract class AppRoutes {
   static const welcome = '/auth/welcome';
   static const login = '/auth/login';
   static const register = '/auth/register';

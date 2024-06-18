@@ -1,6 +1,4 @@
-class AssetValue {
-  AssetValue._();
-
+abstract class AssetValue {
   static const welcomeIllustrationPng =
       'assets/images/welcome-illustration.png';
   static const loginIllustrationPng = 'assets/images/login-illustration.png';

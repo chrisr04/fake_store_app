@@ -1,6 +1,4 @@
-class StringValue {
-  StringValue._();
-
+abstract class StringValue {
   static const welcome = '¡Bienvenido!';
   static const signIn = 'Iniciar sesión';
   static const signUp = 'Registrarme';

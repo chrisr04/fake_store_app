@@ -1,6 +1,6 @@
 import 'package:fake_store_app/common/values/values.dart';
 
-class FormValidatorHelper {
+abstract class FormValidatorHelper {
   static const _emailRegex =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 

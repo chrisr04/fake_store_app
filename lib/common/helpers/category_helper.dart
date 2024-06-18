@@ -1,8 +1,6 @@
 import 'package:fake_store_app/common/values/values.dart';
 
-class CategoryHelper {
-  CategoryHelper._();
-
+abstract class CategoryHelper {
   static const electronics = 'electronics';
   static const womensClothing = "women's clothing";
   static const mensClothing = "men's clothing";
