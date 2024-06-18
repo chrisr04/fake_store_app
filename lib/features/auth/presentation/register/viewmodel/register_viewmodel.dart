@@ -18,28 +18,46 @@ class RegisterViewModel with ChangeNotifier {
   }) {
     switch (field) {
       case RegisterFormField.name:
-        _state = _state.copyWith(name: value);
+        _state = _state.copyWith(
+          name: value,
+          type: RegisterStateType.formChanged,
+        );
         break;
       case RegisterFormField.lastname:
-        _state = _state.copyWith(lastname: value);
+        _state = _state.copyWith(
+          lastname: value,
+          type: RegisterStateType.formChanged,
+        );
         break;
       case RegisterFormField.email:
-        _state = _state.copyWith(email: value);
+        _state = _state.copyWith(
+          email: value,
+          type: RegisterStateType.formChanged,
+        );
         break;
       case RegisterFormField.phone:
-        _state = _state.copyWith(name: value);
+        _state = _state.copyWith(
+          phone: value,
+          type: RegisterStateType.formChanged,
+        );
         break;
       case RegisterFormField.username:
-        _state = _state.copyWith(username: value);
+        _state = _state.copyWith(
+          username: value,
+          type: RegisterStateType.formChanged,
+        );
         break;
       case RegisterFormField.password:
-        _state = _state.copyWith(password: value);
+        _state = _state.copyWith(
+          password: value,
+          type: RegisterStateType.formChanged,
+        );
         break;
     }
     notifyListeners();
   }
 
-  void onRegister(UserEntity user) async {
+  Future<void> onRegister(UserEntity user) async {
     _state = _state.copyWith(type: RegisterStateType.loading);
     notifyListeners();
 
@@ -47,7 +65,7 @@ class RegisterViewModel with ChangeNotifier {
       user,
     );
     final signUpResult = failureOrSigned.fold(
-      () => null,
+      () {},
       (failure) => failure,
     );
 

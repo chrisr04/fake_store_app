@@ -11,7 +11,7 @@ class CategoryDetailViewModel with ChangeNotifier {
   CategoryDetailState _state = const CategoryDetailState();
   CategoryDetailState get state => _state;
 
-  void onLoadProducts(String category) async {
+  Future<void> onLoadProducts(String category) async {
     _state = _state.copyWith(type: CategoryDetailStateType.loading);
     notifyListeners();
     final failureOrProducts = await _repository.getCategoryProducts(category);

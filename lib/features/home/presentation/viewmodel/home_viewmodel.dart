@@ -5,15 +5,13 @@ import 'package:fake_store_app/features/home/domain/domain.dart';
 part 'home_state.dart';
 
 class HomeViewModel with ChangeNotifier {
-  HomeViewModel(this._repository) {
-    onLoadSections();
-  }
+  HomeViewModel(this._repository);
 
   final FakeHomeRepository _repository;
   HomeState _state = const HomeState();
   HomeState get state => _state;
 
-  void onLoadSections() async {
+  Future<void> onLoadSections() async {
     _state = _state.copyWith(type: HomeStateType.loading);
     notifyListeners();
 
@@ -32,7 +30,7 @@ class HomeViewModel with ChangeNotifier {
         final mostBought = products.take(7).toList();
         products.sort((p1, p2) => p2.rating.rate.compareTo(p1.rating.rate));
         final recommended = products.take(7).toList();
-        products.sort((p1, p2) => p2.title.compareTo(p1.title));
+        products.sort((p1, p2) => p1.title.compareTo(p2.title));
         final recentlyAdded = products.take(7).toList();
 
         _state = _state.copyWith(

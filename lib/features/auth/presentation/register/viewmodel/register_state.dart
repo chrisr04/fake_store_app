@@ -1,6 +1,6 @@
 part of 'register_viewmodel.dart';
 
-enum RegisterStateType { initial, loading, signedUp, error }
+enum RegisterStateType { initial, formChanged, loading, signedUp, error }
 
 class RegisterState {
   RegisterState({

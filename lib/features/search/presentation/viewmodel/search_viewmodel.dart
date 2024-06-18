@@ -16,7 +16,7 @@ class SearchViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void onSearchProducts(String query) async {
+  Future<void> onSearchProducts(String query) async {
     _state = _state.copyWith(type: SearchStateType.loading);
     notifyListeners();
     final failureOrResults = await _repository.searchProducts(query);

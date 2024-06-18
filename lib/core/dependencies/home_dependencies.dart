@@ -14,6 +14,6 @@ final _homeDepdencencies = [
   ChangeNotifierProvider<HomeViewModel>(
     create: (context) => HomeViewModel(
       context.read<FakeHomeRepository>(),
-    ),
+    )..onLoadSections(),
   ),
 ];

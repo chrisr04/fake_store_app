@@ -18,7 +18,7 @@ class CartViewModel with ChangeNotifier {
     return isAdded ?? false;
   }
 
-  void onCreateCart(CartEntity cart) async {
+  Future<void> onCreateCart(CartEntity cart) async {
     final failureOrCreated = await _repository.createCart(cart);
     failureOrCreated.fold(
       (failure) {
