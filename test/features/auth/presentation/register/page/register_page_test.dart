@@ -138,6 +138,13 @@ void main() {
 
       registerViewModel.changeStateAndNotify(
         RegisterState(
+          type: RegisterStateType.loading,
+        ),
+      );
+      await tester.pump();
+
+      registerViewModel.changeStateAndNotify(
+        RegisterState(
           type: RegisterStateType.signedUp,
           user: user,
         ),
