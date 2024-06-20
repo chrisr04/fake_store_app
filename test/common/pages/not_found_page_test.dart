@@ -6,7 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets('NotFoundPage renders correctly and button works',
       (WidgetTester tester) async {
-    // Mock the navigator
     final FakeNavigatorObserver menuNavigatorObserver = FakeNavigatorObserver();
     final FakeNavigatorObserver rootNavigatorObserver = FakeNavigatorObserver();
 

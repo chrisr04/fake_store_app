@@ -122,25 +122,21 @@ void main() {
     final bottomNavigationBarFinder = find.byType(MenuNavigationBar);
     expect(bottomNavigationBarFinder, findsOneWidget);
 
-    // Navigate to categories
     await tester.tap(find.byIcon(Icons.shopping_bag_outlined));
     await tester.pumpAndSettle();
 
     expect(find.text(StringValue.electronics), findsOneWidget);
 
-    // Navigate to support
     await tester.tap(find.byIcon(Icons.headset_mic_outlined));
     await tester.pumpAndSettle();
 
     expect(find.text(StringValue.helloDoYouNeedHelp), findsOneWidget);
 
-    // Navigate to cart
     await tester.tap(find.byIcon(Icons.shopping_cart_outlined));
     await tester.pumpAndSettle();
 
     expect(find.text(StringValue.myCart), findsOneWidget);
 
-    // Navigate to home
     await tester.tap(find.byIcon(Icons.home_outlined));
     await tester.pump();
 
