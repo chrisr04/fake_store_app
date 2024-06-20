@@ -72,6 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
         FakeSnackBar.showError(context, message: state.error);
         break;
       case RegisterStateType.signedUp:
+        FakeNavigator.root.pop();
         FakeModalSuccess.show(
           context,
           canClose: false,

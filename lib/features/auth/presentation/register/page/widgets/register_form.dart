@@ -23,6 +23,7 @@ class _RegisterFormState extends State<RegisterForm> {
             textAlign: TextAlign.start,
           ),
           const FakeTextField(
+            key: KeyValue.registerNameInput,
             hintText: StringValue.writeYourName,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
@@ -34,6 +35,7 @@ class _RegisterFormState extends State<RegisterForm> {
             textAlign: TextAlign.start,
           ),
           const FakeTextField(
+            key: KeyValue.registerLastNameInput,
             hintText: StringValue.writeYourLastName,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
@@ -45,6 +47,7 @@ class _RegisterFormState extends State<RegisterForm> {
             textAlign: TextAlign.start,
           ),
           const FakeTextField(
+            key: KeyValue.registerEmailInput,
             hintText: StringValue.writeYourEmail,
             keyboardType: TextInputType.emailAddress,
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -57,6 +60,7 @@ class _RegisterFormState extends State<RegisterForm> {
             textAlign: TextAlign.start,
           ),
           const FakeTextField(
+            key: KeyValue.registerPhoneInput,
             hintText: StringValue.writeYourPhone,
             keyboardType: TextInputType.emailAddress,
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -69,6 +73,7 @@ class _RegisterFormState extends State<RegisterForm> {
             textAlign: TextAlign.start,
           ),
           const FakeTextField(
+            key: KeyValue.registerUsernameInput,
             hintText: StringValue.writeYourUserName,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
@@ -80,6 +85,7 @@ class _RegisterFormState extends State<RegisterForm> {
             textAlign: TextAlign.start,
           ),
           const FakeTextFieldObscure(
+            key: KeyValue.registerPasswordInput,
             hintText: StringValue.writeYourPassword,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
@@ -88,6 +94,7 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(
             width: double.infinity,
             child: FakeButtonPrimary(
+              key: KeyValue.registerSignUpBtn,
               onPressed: _onTapButton,
               size: FakeButtonSize.large,
               label: StringValue.signUp,

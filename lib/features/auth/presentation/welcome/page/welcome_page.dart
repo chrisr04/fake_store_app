@@ -38,22 +38,24 @@ class WelcomePage extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: FakeButtonPrimary(
+                        key: KeyValue.welcomeSignInBtn,
+                        label: StringValue.signIn,
+                        size: FakeButtonSize.large,
                         onPressed: () => FakeNavigator.root.pushNamed(
                           AppRoutes.login,
                         ),
-                        label: StringValue.signIn,
-                        size: FakeButtonSize.large,
                       ),
                     ),
                     const FakeSpacerS(),
                     SizedBox(
                       width: double.infinity,
                       child: FakeButtonOutlinedPrimary(
+                        key: KeyValue.welcomeSignUpBtn,
+                        label: StringValue.signUp,
+                        size: FakeButtonSize.large,
                         onPressed: () => FakeNavigator.root.pushNamed(
                           AppRoutes.register,
                         ),
-                        label: StringValue.signUp,
-                        size: FakeButtonSize.large,
                       ),
                     ),
                   ],

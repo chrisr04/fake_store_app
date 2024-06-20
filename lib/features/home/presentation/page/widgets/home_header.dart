@@ -48,7 +48,9 @@ class _HomeHeaderDelegate extends SliverPersistentHeaderDelegate {
             left: 0.0,
             right: 0.0,
             duration: const Duration(milliseconds: 100),
-            child: const HomeSearchBar(),
+            child: const HomeSearchBar(
+              key: KeyValue.homeSearchAppBar,
+            ),
           ),
         ],
       ),

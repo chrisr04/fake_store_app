@@ -30,6 +30,7 @@ class _SearchPageState extends State<SearchPage> {
     final viewModel = context.watch<SearchViewModel>();
     return Scaffold(
       appBar: FakeSearchAppBar(
+        key: KeyValue.searchQueryInput,
         hintText: StringValue.searchByNameOrDescription,
         showBackButton: true,
         onSubmit: viewModel.onSearchProducts,

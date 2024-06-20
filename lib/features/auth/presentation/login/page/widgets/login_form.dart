@@ -26,6 +26,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           FakeTextField(
+            key: KeyValue.loginUsernameInput,
             hintText: StringValue.writeYourUserName,
             validator: FormValidatorHelper.isRequired,
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -41,6 +42,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           FakeTextFieldObscure(
+            key: KeyValue.loginPasswordInput,
             hintText: StringValue.writeYourPassword,
             validator: FormValidatorHelper.isRequired,
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -50,6 +52,7 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             width: double.infinity,
             child: FakeButtonPrimary(
+              key: KeyValue.loginSignInBtn,
               onPressed: _onTapButton,
               size: FakeButtonSize.large,
               label: StringValue.signIn,
