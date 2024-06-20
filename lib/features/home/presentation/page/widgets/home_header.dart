@@ -61,7 +61,9 @@ class _HomeHeaderDelegate extends SliverPersistentHeaderDelegate {
   @override
   double get minExtent => 123.0;
 
+  // coverage:ignore-start
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
       false;
+  // coverage:ignore-end
 }

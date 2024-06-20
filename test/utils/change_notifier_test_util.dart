@@ -9,7 +9,7 @@ Future<int> changeNotifierTest<T>({
   FutureOr<void> Function()? tearDown,
 }) async {
   if (notifier is! ChangeNotifier) {
-    throw ArgumentError('notifier must be a ChangeNotifier class');
+    throw ArgumentError('[notifier] argument must be a ChangeNotifier class');
   }
 
   int notifierCounter = 0;

@@ -26,10 +26,13 @@ class HomeViewModel with ChangeNotifier {
       (products) {
         products.sort((p1, p2) => p1.price.compareTo(p2.price));
         final promotions = products.take(7).toList();
+
         products.sort((p1, p2) => p1.rating.count.compareTo(p2.rating.count));
         final mostBought = products.take(7).toList();
+
         products.sort((p1, p2) => p2.rating.rate.compareTo(p1.rating.rate));
         final recommended = products.take(7).toList();
+
         products.sort((p1, p2) => p1.title.compareTo(p2.title));
         final recentlyAdded = products.take(7).toList();
 

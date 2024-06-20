@@ -9,11 +9,6 @@ abstract class FormValidatorHelper {
     return StringValue.thisFieldIsRequired;
   }
 
-  static String? isRequiredInteger(String? value) {
-    if (value != null && int.tryParse(value) != null) return null;
-    return StringValue.thisFieldMustContainIntegerNumbers;
-  }
-
   static String? isRequiredEmail(String? value) {
     RegExp regExp = RegExp(_emailRegex);
     if (value != null && regExp.hasMatch(value)) return null;

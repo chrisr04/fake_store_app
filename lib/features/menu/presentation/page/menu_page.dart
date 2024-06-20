@@ -34,7 +34,7 @@ class _MenuPageState extends State<MenuPage> {
       body: NavigatorPopHandler(
         onPop: () => FakeNavigator.menu.pop(),
         child: Navigator(
-          key: AppConfig.menuNavigatorKey,
+          key: FakeNavigator.menuNavigatorKey,
           onGenerateRoute: RouteGenerator.onGenerateMenuRoute,
           initialRoute: AppRoutes.home,
         ),

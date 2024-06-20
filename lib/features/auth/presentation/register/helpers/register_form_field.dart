@@ -1,1 +1,8 @@
-enum RegisterFormField { name, lastname, email, phone, username, password }
+enum RegisterFormField {
+  name,
+  lastname,
+  email,
+  phone,
+  username,
+  password,
+}

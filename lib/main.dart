@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
     return AppDependencies(
       child: MaterialApp(
         theme: FakeTheme.light,
-        navigatorKey: AppConfig.rootNavigatorKey,
+        navigatorKey: FakeNavigator.rootNavigatorKey,
         initialRoute: AppRoutes.welcome,
         onGenerateRoute: RouteGenerator.onGenerateRoute,
       ),

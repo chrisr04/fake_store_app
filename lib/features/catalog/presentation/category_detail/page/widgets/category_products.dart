@@ -10,7 +10,10 @@ class CategoryProducts extends StatelessWidget {
       CategoryDetailStateType.loaded => VerticalProductSliverList(
           products: state.products,
         ),
-      CategoryDetailStateType.error => ErrorMessage(error: state.error),
+      CategoryDetailStateType.error => SliverFillRemaining(
+          hasScrollBody: false,
+          child: ErrorMessage(error: state.error),
+        ),
       _ => const SliverFillRemaining(
           hasScrollBody: false,
           child: Center(

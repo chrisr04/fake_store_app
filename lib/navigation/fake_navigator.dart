@@ -1,8 +1,13 @@
-import 'package:fake_store_app/core/core.dart';
 import 'package:flutter/material.dart';
 
 abstract class FakeNavigator {
-  static NavigatorState get root => AppConfig.rootNavigatorKey.currentState!;
+  static GlobalKey<NavigatorState> rootNavigatorKey =
+      GlobalKey<NavigatorState>();
 
-  static NavigatorState get menu => AppConfig.menuNavigatorKey.currentState!;
+  static GlobalKey<NavigatorState> menuNavigatorKey =
+      GlobalKey<NavigatorState>();
+
+  static NavigatorState get root => rootNavigatorKey.currentState!;
+
+  static NavigatorState get menu => menuNavigatorKey.currentState!;
 }

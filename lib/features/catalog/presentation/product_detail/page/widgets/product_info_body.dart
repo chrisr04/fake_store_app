@@ -25,7 +25,7 @@ class ProductInfoBody extends StatelessWidget {
               ),
               const FakeSpacerS(axis: FakeSpacerAxis.x),
               FakeTextHeading4(
-                '\$${product.price.toStringAsFixed(1).replaceAll('.', ',')}',
+                '\$${product.price.toStringAsFixed(2).replaceAll('.', ',')}',
                 weight: FontWeight.w700,
               ),
             ],
