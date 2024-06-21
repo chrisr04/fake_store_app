@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 abstract class FakeNavigator {
-  static GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey<NavigatorState>();
+  static final rootNavigatorKey = GlobalKey<NavigatorState>();
 
-  static GlobalKey<NavigatorState> menuNavigatorKey =
-      GlobalKey<NavigatorState>();
+  static final menuNavigatorKey = GlobalKey<NavigatorState>();
 
   static NavigatorState get root => rootNavigatorKey.currentState!;
 
