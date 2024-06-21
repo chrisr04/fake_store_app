@@ -154,7 +154,7 @@ Para generar el archivo lcov.info que contendra la información de la cobertura 
 flutter test --coverage
 ```
 
-**Genera el hmtl necesario**
+**Genera el html necesario**
 
 Para generar el html que mostrara nuestro reporte debes ejecutar el siguiente comando:
 
