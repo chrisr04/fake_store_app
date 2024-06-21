@@ -184,7 +184,7 @@ AppConfig.getString('welcome');
 
 **Obtener imágenes**
 ```dart
-AppConfig.getString('welcomeIllustrationPng');
+AppConfig.getImage('welcomeIllustrationPng');
 ```
 
 ## Diagrama de Flujo
