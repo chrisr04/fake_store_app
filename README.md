@@ -131,14 +131,6 @@ flutter pub add integration_test
 Para ejecutar las pruebas de integración, utilice el siguiente comando:
 
 ```bash
-flutter test
-```
-
-### Ejecución de las Pruebas
-
-Para ejecutar las pruebas unitarias y de widgets, utilice el siguiente comando:
-
-```bash
 flutter test integration_test/fake_store_test.dart
 ```
 
@@ -146,17 +138,17 @@ flutter test integration_test/fake_store_test.dart
 
 La aplicación cuenta con una cobertura del 91.6%. Si deseas ver un reporte mas detallado sigue los siguientes pasos:
 
-**Genera el archivo lcov.info**
+**Paso 1:**
 
-Para generar el archivo lcov.info que contendra la información de la cobertura de la app ejecuta el siguiente comando:
+Genera el archivo lcov.info que contendrá la información de la cobertura de la app
 
 ```bash
 flutter test --coverage
 ```
 
-**Genera el html necesario**
+**Paso 2:**
 
-Para generar el html que mostrara nuestro reporte debes ejecutar el siguiente comando:
+Genera el html necesario para mostrar el reporte
 
 ```bash
 genhtml coverage/lcov.info -o coverage/html
@@ -164,9 +156,9 @@ genhtml coverage/lcov.info -o coverage/html
 
 **Nota:** Antes de ejecutar este comando debes tener instalado en tu sistema `lcov`, de lo contrario no funcionará. En macOS puedes instalarlo con el comando `brew install lcov`, pero ten en cuenta que este proceso puede variar en otros sistemas operativos.
 
-**Abrir el reporte**
+**Paso 3:**
 
-Para ver el reporte en el navegador ejecuta el siguiente comando:
+Abre el reporte en el navegador
 
 ```bash
 open coverage/html/index.html
