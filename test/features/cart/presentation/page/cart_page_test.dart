@@ -1,3 +1,4 @@
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,6 +8,10 @@ import 'package:provider/provider.dart';
 class MockCartViewModel extends Mock implements CartViewModel {}
 
 void main() {
+  setUpAll(() async {
+    await AppConfig.init();
+  });
+
   testWidgets('CartPage has a title row, product list, and footer',
       (WidgetTester tester) async {
     final mockViewModel = MockCartViewModel();

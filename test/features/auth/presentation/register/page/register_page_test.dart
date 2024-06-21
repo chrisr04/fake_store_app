@@ -28,45 +28,45 @@ class MockRegisterViewModel extends RegisterViewModel {
 }
 
 void main() {
+  late MockRegisterViewModel registerViewModel;
+  late MockFakeAuthRepository repository;
+  late MockAppConfig appConfig;
+  late UserEntity user;
+
+  setUp(() async {
+    await AppConfig.init();
+    repository = MockFakeAuthRepository();
+    registerViewModel = MockRegisterViewModel(repository);
+    appConfig = MockAppConfig();
+    user = const UserEntity(
+      id: 1,
+      name: UserNameEntity(
+        firstname: 'John',
+        lastname: 'Doe',
+      ),
+      username: 'johndoe',
+      email: 'john.doe@example.com',
+      phone: '123-456-7890',
+      address: AddressEntity(
+        city: 'New York',
+        street: '123 Main St',
+        zipcode: '10001',
+        number: 1,
+        geolocation: GeolocationEntity(
+          lat: '34.5464',
+          long: '345.343',
+        ),
+      ),
+    );
+
+    when(
+      () => repository.signUp(user),
+    ).thenAnswer((_) async => const None());
+
+    when(() => repository.getUsers()).thenAnswer((_) async => const Right([]));
+  });
+
   group('RegisterPage', () {
-    late MockRegisterViewModel registerViewModel;
-    late MockFakeAuthRepository repository;
-    late MockAppConfig appConfig;
-    late UserEntity user;
-
-    setUp(() {
-      repository = MockFakeAuthRepository();
-      registerViewModel = MockRegisterViewModel(repository);
-      appConfig = MockAppConfig();
-      user = const UserEntity(
-        id: 1,
-        name: UserNameEntity(
-          firstname: 'John',
-          lastname: 'Doe',
-        ),
-        username: 'johndoe',
-        email: 'john.doe@example.com',
-        phone: '123-456-7890',
-        address: AddressEntity(
-          city: 'New York',
-          street: '123 Main St',
-          zipcode: '10001',
-          number: 1,
-          geolocation: GeolocationEntity(
-            lat: '34.5464',
-            long: '345.343',
-          ),
-        ),
-      );
-
-      when(
-        () => repository.signUp(user),
-      ).thenAnswer((_) async => const None());
-
-      when(() => repository.getUsers())
-          .thenAnswer((_) async => const Right([]));
-    });
-
     Widget createWidget() => MultiProvider(
           providers: [
             ChangeNotifierProvider<RegisterViewModel>.value(

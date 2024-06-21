@@ -28,7 +28,7 @@ class TotalCartFooter extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const FakeTextHeading6(StringValue.total),
+                FakeTextHeading6(StringValue.total),
                 Flexible(
                   child: FakeTextHeading5(
                     '\$${total.toStringAsFixed(2).replaceAll('.', ',')}',

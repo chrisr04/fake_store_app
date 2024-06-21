@@ -5,15 +5,15 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         FakeImageAsset(
           path: AssetValue.loginIllustrationPng,
           height: 200.0,
         ),
-        FakeSpacerXL(),
+        const FakeSpacerXL(),
         FakeTextHeading3(StringValue.login),
-        FakeSpacerL(),
+        const FakeSpacerL(),
       ],
     );
   }

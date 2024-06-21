@@ -8,7 +8,7 @@ class SupportHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const FakeTextHeading3(
+        FakeTextHeading3(
           StringValue.helloDoYouNeedHelp,
           weight: FontWeight.w600,
         ),

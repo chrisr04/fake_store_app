@@ -13,13 +13,13 @@ class CartTitleRow extends StatelessWidget {
           top: FakeSpacing.xl,
           bottom: FakeSpacing.xs,
         ),
-        child: const Row(
+        child: Row(
           children: [
-            FakeIcon(
+            const FakeIcon(
               Icons.shopping_cart_outlined,
               size: 32.0,
             ),
-            FakeSpacerS(axis: FakeSpacerAxis.x),
+            const FakeSpacerS(axis: FakeSpacerAxis.x),
             Flexible(
               child: FakeTextHeading3(
                 StringValue.myCart,

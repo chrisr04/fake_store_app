@@ -22,12 +22,12 @@ class WelcomePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const FakeImageAsset(
+                    FakeImageAsset(
                       path: AssetValue.welcomeIllustrationPng,
                       height: 250.0,
                     ),
                     const FakeSpacerXXL(),
-                    const FakeTextHeading3(StringValue.welcome),
+                    FakeTextHeading3(StringValue.welcome),
                     const FakeSpacerS(),
                     FakeTextMedium(
                       StringValue.weAreGladToHaveYouHere,

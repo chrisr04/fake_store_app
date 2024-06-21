@@ -1,4 +1,5 @@
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/catalog/catalog.dart';
 import 'package:fake_store_app/navigation/navigation.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
@@ -11,6 +12,10 @@ class MockCategoryDetailViewModel extends Mock
     implements CategoryDetailViewModel {}
 
 void main() {
+  setUpAll(() async {
+    await AppConfig.init();
+  });
+
   testWidgets(
       'CategoryDetailPage show widgets correctly and navigate to search',
       (WidgetTester tester) async {

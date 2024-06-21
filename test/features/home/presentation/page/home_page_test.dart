@@ -35,7 +35,8 @@ void main() {
   late List<ProductEntity> products;
   late MockAppConfig appConfig;
 
-  setUp(() {
+  setUp(() async {
+    await AppConfig.init();
     appConfig = MockAppConfig();
     repository = MockFakeHomeRepository();
     homeViewModel = MockHomeViewModel(repository);

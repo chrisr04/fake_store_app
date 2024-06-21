@@ -1,4 +1,5 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,7 +14,8 @@ void main() {
   late ProductEntity product;
   late MockCartViewModel cartViewModel;
 
-  setUpAll(() {
+  setUpAll(() async {
+    await AppConfig.init();
     product = const ProductEntity(
       id: 1,
       title: 'Test Product',

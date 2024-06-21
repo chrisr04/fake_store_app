@@ -5,8 +5,8 @@ class RegisterTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(
+    return Padding(
+      padding: const EdgeInsets.only(
         bottom: FakeSpacing.xl,
       ),
       child: FakeTextHeading3(StringValue.registry),

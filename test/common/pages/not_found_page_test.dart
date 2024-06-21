@@ -1,9 +1,14 @@
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/navigation/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  setUp(() async {
+    await AppConfig.init();
+  });
+
   testWidgets('NotFoundPage renders correctly and button works',
       (WidgetTester tester) async {
     final FakeNavigatorObserver menuNavigatorObserver = FakeNavigatorObserver();

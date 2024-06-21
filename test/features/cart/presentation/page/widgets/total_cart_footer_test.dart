@@ -1,5 +1,6 @@
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ void main() {
   late CartEntity filledCart;
   late CartEntity emptyCart;
 
-  setUp(() {
+  setUp(() async {
+    await AppConfig.init();
+
     cartViewModel = MockCartViewModel();
     emptyCart = CartEntity(
       id: 123,

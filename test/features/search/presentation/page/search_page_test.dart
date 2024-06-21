@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -33,7 +34,8 @@ void main() {
   late MockSearchViewModel searchViewModel;
   late MockCartViewModel cartViewModel;
 
-  setUp(() {
+  setUp(() async {
+    await AppConfig.init();
     repository = MockFakeSearchRepository();
     searchViewModel = MockSearchViewModel(repository);
     cartViewModel = MockCartViewModel();

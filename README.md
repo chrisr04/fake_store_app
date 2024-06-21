@@ -164,6 +164,28 @@ Abre el reporte en el navegador
 open coverage/html/index.html
 ```
 
+## Parametrización
+
+Para el manejo de strings y assets se hizo uso de archivos de configuración en formato Json, estos archivos se encuentan en la carpeta de `assets` y contienen los valores utilizados en la app para mostrar imagenes y textos necesarios para la interfaz de usuario. Para administrar estos recursos se utiliza la clase `AppConfig` que se encaga de cargar y proveer los datos guardados en los archivos.
+
+A continuación hay algunos ejemplos de como se utilizan:
+
+** Cargar los archivos **
+
+```dart
+AppConfig.init();
+```
+
+** Obtener textos **
+
+```dart
+AppConfig.getString('welcome');
+```
+
+** Obtener imágenes **
+```dart
+AppConfig.getString('welcomeIllustrationPng');
+```
 
 ## Diagrama de Flujo
 

@@ -17,36 +17,36 @@ class _RegisterFormState extends State<RegisterForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const FakeTextLarge(
+          FakeTextLarge(
             StringValue.name,
             weight: FontWeight.w600,
             textAlign: TextAlign.start,
           ),
-          const FakeTextField(
+          FakeTextField(
             key: KeyValue.registerNameInput,
             hintText: StringValue.writeYourName,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          const FakeTextLarge(
+          FakeTextLarge(
             StringValue.lastName,
             weight: FontWeight.w600,
             textAlign: TextAlign.start,
           ),
-          const FakeTextField(
+          FakeTextField(
             key: KeyValue.registerLastNameInput,
             hintText: StringValue.writeYourLastName,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          const FakeTextLarge(
+          FakeTextLarge(
             StringValue.email,
             weight: FontWeight.w600,
             textAlign: TextAlign.start,
           ),
-          const FakeTextField(
+          FakeTextField(
             key: KeyValue.registerEmailInput,
             hintText: StringValue.writeYourEmail,
             keyboardType: TextInputType.emailAddress,
@@ -54,12 +54,12 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequiredEmail,
           ),
           const FakeSpacerM(),
-          const FakeTextLarge(
+          FakeTextLarge(
             StringValue.phone,
             weight: FontWeight.w600,
             textAlign: TextAlign.start,
           ),
-          const FakeTextField(
+          FakeTextField(
             key: KeyValue.registerPhoneInput,
             hintText: StringValue.writeYourPhone,
             keyboardType: TextInputType.emailAddress,
@@ -67,24 +67,24 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          const FakeTextLarge(
+          FakeTextLarge(
             StringValue.user,
             weight: FontWeight.w600,
             textAlign: TextAlign.start,
           ),
-          const FakeTextField(
+          FakeTextField(
             key: KeyValue.registerUsernameInput,
             hintText: StringValue.writeYourUserName,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          const FakeTextLarge(
+          FakeTextLarge(
             StringValue.password,
             weight: FontWeight.w600,
             textAlign: TextAlign.start,
           ),
-          const FakeTextFieldObscure(
+          FakeTextFieldObscure(
             key: KeyValue.registerPasswordInput,
             hintText: StringValue.writeYourPassword,
             autovalidateMode: AutovalidateMode.onUserInteraction,

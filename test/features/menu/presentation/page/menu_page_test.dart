@@ -45,7 +45,8 @@ void main() {
   late CartEntity cart;
   late UserEntity user;
 
-  setUp(() {
+  setUp(() async {
+    await AppConfig.init();
     cart = CartEntity(
       id: 123,
       userId: 456,

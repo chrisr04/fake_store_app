@@ -1,0 +1,19 @@
+{
+    "welcomeIllustrationPng": "assets/images/welcome-illustration.png",
+    "loginIllustrationPng": "assets/images/login-illustration.png",
+    "registerIllustrationPng": "assets/images/register-illustration.png",
+    "electronicsPng": "assets/images/electronics.png",
+    "womenClothingPng": "assets/images/women-clothing.png",
+    "menClothingPng": "assets/images/men-clothing.png",
+    "jeweleryPng": "assets/images/jewelery.png",
+    "supportFace1Jpg": "assets/images/support-face-1.jpg",
+    "supportFace2Jpg": "assets/images/support-face-2.jpg",
+    "supportFace3Jpg": "assets/images/support-face-3.jpg",
+    "supportFace4Jpg": "assets/images/support-face-4.jpg",
+    "supportFace5Jpg": "assets/images/support-face-5.jpg",
+    "searchIllustrationPng": "assets/images/search-illustration.png",
+    "emptySearchIllustrationPng": "assets/images/empty-search-illustration.png",
+    "emptyCartIllustrationPng": "assets/images/empty-cart-illustration.png",
+    "errorIllustrationPng": "assets/images/error-illustration.png",
+    "notFoundIllustrationPng": "assets/images/not-found-illustration.png"
+}

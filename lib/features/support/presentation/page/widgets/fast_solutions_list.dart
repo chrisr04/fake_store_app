@@ -9,7 +9,7 @@ class FastSolutionsList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const FakeSpacerL(),
-        const FakeTextHeading4(
+        FakeTextHeading4(
           StringValue.fastSolutions,
           weight: FontWeight.w600,
         ),

@@ -17,7 +17,7 @@ class _LoginFormState extends State<LoginForm> {
       key: _formKey,
       child: Column(
         children: [
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: FakeTextLarge(
               StringValue.user,
@@ -33,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
             onChanged: viewModel.onChangeUserName,
           ),
           const FakeSpacerM(),
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: FakeTextLarge(
               StringValue.password,

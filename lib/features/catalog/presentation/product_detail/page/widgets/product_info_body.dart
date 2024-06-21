@@ -38,8 +38,8 @@ class ProductInfoBody extends StatelessWidget {
             product.description,
             color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               top: FakeSpacing.lg,
               bottom: FakeSpacing.sm,
             ),

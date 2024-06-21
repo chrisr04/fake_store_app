@@ -1,5 +1,6 @@
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:fake_store_app/features/home/home.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ class MockCartViewModel extends Mock implements CartViewModel {}
 void main() {
   late MockCartViewModel cartViewModel;
 
-  setUpAll(() {
+  setUpAll(() async {
+    await AppConfig.init();
     cartViewModel = MockCartViewModel();
     when(() => cartViewModel.isProductAdded(any())).thenReturn(false);
   });

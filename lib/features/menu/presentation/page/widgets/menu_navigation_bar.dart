@@ -21,22 +21,22 @@ class _MenuNavigationBarState extends State<MenuNavigationBar> {
       selectedIndex: _selectedPage,
       onDestinationChanged: _onChangePage,
       destinations: [
-        const NavigationDestination(
+        NavigationDestination(
           key: KeyValue.menuHomeIconBtn,
-          icon: FakeIcon(Icons.home_outlined),
-          selectedIcon: FakeIcon(Icons.home),
+          icon: const FakeIcon(Icons.home_outlined),
+          selectedIcon: const FakeIcon(Icons.home),
           label: StringValue.home,
         ),
-        const NavigationDestination(
+        NavigationDestination(
           key: KeyValue.menuCatalogIconBtn,
-          icon: FakeIcon(Icons.shopping_bag_outlined),
-          selectedIcon: FakeIcon(Icons.shopping_bag),
+          icon: const FakeIcon(Icons.shopping_bag_outlined),
+          selectedIcon: const FakeIcon(Icons.shopping_bag),
           label: StringValue.catalog,
         ),
-        const NavigationDestination(
+        NavigationDestination(
           key: KeyValue.menuSupportIconBtn,
-          icon: FakeIcon(Icons.headset_mic_outlined),
-          selectedIcon: FakeIcon(Icons.headset_mic),
+          icon: const FakeIcon(Icons.headset_mic_outlined),
+          selectedIcon: const FakeIcon(Icons.headset_mic),
           label: StringValue.support,
         ),
         NavigationDestination(

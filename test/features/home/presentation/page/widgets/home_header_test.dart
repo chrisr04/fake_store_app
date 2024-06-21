@@ -10,7 +10,8 @@ class MockAppConfig extends Mock implements AppConfig {}
 void main() {
   late MockAppConfig appConfig;
 
-  setUp(() {
+  setUp(() async {
+    await AppConfig.init();
     appConfig = MockAppConfig();
   });
 

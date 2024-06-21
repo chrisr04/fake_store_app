@@ -1,10 +1,15 @@
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  setUpAll(() async {
+    await AppConfig.init();
+  });
+
   testWidgets('CartTitleRow displays correctly', (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(

@@ -5,7 +5,7 @@ class EmptyCartMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverFillRemaining(
+    return SliverFillRemaining(
       hasScrollBody: false,
       child: Center(
         child: FakeInformationTemplate(

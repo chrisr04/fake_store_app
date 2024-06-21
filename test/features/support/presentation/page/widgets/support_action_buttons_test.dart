@@ -1,9 +1,14 @@
+import 'package:fake_store_app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/features/support/support.dart';
 
 void main() {
+  setUpAll(() async {
+    await AppConfig.init();
+  });
+
   testWidgets('SupportActionButtons displays buttons with correct labels',
       (WidgetTester tester) async {
     await tester.pumpWidget(

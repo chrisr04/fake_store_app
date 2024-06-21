@@ -1,3 +1,4 @@
+import 'package:fake_store_app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:fake_api/fake_api.dart';
@@ -13,7 +14,8 @@ class MockCartViewModel extends Mock implements CartViewModel {}
 void main() {
   late MockCartViewModel cartViewModel;
 
-  setUpAll(() {
+  setUpAll(() async {
+    await AppConfig.init();
     cartViewModel = MockCartViewModel();
   });
 

@@ -28,6 +28,10 @@ class MockLoginViewModel extends LoginViewModel {
 }
 
 void main() {
+  setUpAll(() async {
+    await AppConfig.init();
+  });
+
   group('LoginPage', () {
     late MockLoginViewModel loginViewModel;
     late MockFakeAuthRepository repository;

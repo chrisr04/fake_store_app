@@ -1,5 +1,6 @@
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/auth/auth.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ void main() {
   late MockRegisterViewModel registerViewModel;
   late UserEntity user;
 
-  setUpAll(() {
+  setUpAll(() async {
+    await AppConfig.init();
     registerViewModel = MockRegisterViewModel();
     user = const UserEntity(
       id: 1,

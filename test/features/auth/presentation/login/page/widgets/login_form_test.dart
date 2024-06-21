@@ -1,4 +1,5 @@
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/auth/auth.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ class MockLoginViewModel extends Mock implements LoginViewModel {}
 
 void main() {
   late MockLoginViewModel loginViewModel;
-  setUpAll(() {
+  setUpAll(() async {
+    await AppConfig.init();
     loginViewModel = MockLoginViewModel();
   });
 

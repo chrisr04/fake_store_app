@@ -3,7 +3,9 @@ import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:fake_store_app/navigation/navigation.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppConfig.init();
   runApp(const MainApp());
 }
 
