@@ -88,7 +88,7 @@ Las pruebas de widget verifican que los componentes de la interfaz de usuario se
 
 ### Configuración del Entorno
 
-Para ejecutar las pruebas unitarias y de widgets, se requiere configurar el entorno de desarrollo con la siguiente dependencia:
+Para realizar las pruebas unitarias y de widgets, se requiere configurar el entorno de desarrollo con la siguiente dependencia:
 
 ```bash
 flutter pub add flutter_test
@@ -120,7 +120,7 @@ Las pruebas de integración verifican la interacción entre diferentes partes de
 
 ### Configuración del Entorno
 
-Para ejecutar las pruebas de integración, se requiere configurar el entorno de desarrollo con la siguiente dependencia:
+Para realizar las pruebas de integración, se requiere configurar el entorno de desarrollo con la siguiente dependencia:
 
 ```bash
 flutter pub add integration_test
