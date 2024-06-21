@@ -170,19 +170,19 @@ Para el manejo de strings y assets se hizo uso de archivos de configuración en 
 
 A continuación hay algunos ejemplos de como se utilizan:
 
-** Cargar los archivos **
+**Cargar los archivos**
 
 ```dart
 AppConfig.init();
 ```
 
-** Obtener textos **
+**Obtener textos**
 
 ```dart
 AppConfig.getString('welcome');
 ```
 
-** Obtener imágenes **
+**Obtener imágenes**
 ```dart
 AppConfig.getString('welcomeIllustrationPng');
 ```
