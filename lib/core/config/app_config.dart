@@ -19,11 +19,11 @@ class AppConfig {
     final encodedStrings = await rootBundle.loadString(
       'assets/values/strings.json',
     );
-    final ecodedImages = await rootBundle.loadString(
+    final encodedImages = await rootBundle.loadString(
       'assets/values/images.json',
     );
     _strings = Map<String, String>.from(jsonDecode(encodedStrings));
-    _images = Map<String, String>.from(jsonDecode(ecodedImages));
+    _images = Map<String, String>.from(jsonDecode(encodedImages));
   }
 
   static String getString(String key) => _strings[key] ?? '';
