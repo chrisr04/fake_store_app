@@ -229,7 +229,7 @@ FakeShoppingCartCard(
   title: product.title, // Camiseta roja
   price: product.price,
   deleteButtonText: StringValue.delete, // Eliminar
-  deleteSemanticsLabel: semantics.deleteButton.label, // Eliminar Camiseta roja
+  deleteSemanticsLabel: '${semantics.deleteButton.label} ${product.title}', // Eliminar producto Camiseta roja
   removeSemanticsLabel: semantics.removeButton.label, // Disminuir cantidad en 1
   addSemanticsLabel: semantics.addButton.label, // Aumentar cantidad en 1
   inputSemanticsLabel: semantics.quantityInput.label, // Modificar la cantidad
