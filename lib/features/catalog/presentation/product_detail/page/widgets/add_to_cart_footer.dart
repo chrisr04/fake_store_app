@@ -25,28 +25,31 @@ class AddToCartFooter extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              width: double.infinity,
-              child: FakeButtonPrimary(
-                onPressed: () {
-                  if (isOnCart) {
-                    cartViewModel.onRemoveProduct(product.id);
-                    return;
-                  }
-                  cartViewModel.onAddProduct(
-                    CartProductEntity(
-                      productId: product.id,
-                      quantity: 1,
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                    ),
-                  );
-                },
-                label: isOnCart
-                    ? StringValue.removeFromCart
-                    : StringValue.addToCart,
-                size: FakeButtonSize.large,
+            Semantics(
+              sortKey: const OrdinalSortKey(double.maxFinite),
+              child: SizedBox(
+                width: double.infinity,
+                child: FakeButtonPrimary(
+                  onPressed: () {
+                    if (isOnCart) {
+                      cartViewModel.onRemoveProduct(product.id);
+                      return;
+                    }
+                    cartViewModel.onAddProduct(
+                      CartProductEntity(
+                        productId: product.id,
+                        quantity: 1,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                      ),
+                    );
+                  },
+                  label: isOnCart
+                      ? StringValue.removeFromCart
+                      : StringValue.addToCart,
+                  size: FakeButtonSize.large,
+                ),
               ),
             ),
           ],

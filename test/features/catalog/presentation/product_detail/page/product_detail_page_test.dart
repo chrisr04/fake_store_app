@@ -1,4 +1,5 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ void main() {
   late MockCartViewModel cartViewModel;
 
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     product = const ProductEntity(
       id: 1,
       title: 'Test Product',
@@ -38,8 +39,16 @@ void main() {
 
     await mockNetworkImages(
       () async => tester.pumpWidget(
-        ChangeNotifierProvider<CartViewModel>(
-          create: (_) => cartViewModel,
+        MultiProvider(
+          providers: [
+            ChangeNotifierProvider<CartViewModel>(
+              create: (_) => cartViewModel,
+            ),
+            FutureProvider<ProductDetailSemantics>(
+              create: (context) => ProductDetailSemantics.load(),
+              initialData: ProductDetailSemantics.fromJson({}),
+            ),
+          ],
           child: MaterialApp(
             home: ProductDetailPage(
               product: product,

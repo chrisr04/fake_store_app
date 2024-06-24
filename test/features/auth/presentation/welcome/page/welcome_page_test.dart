@@ -8,7 +8,7 @@ import 'package:fake_store_app/features/auth/auth.dart';
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   group('WelcomePage', () {

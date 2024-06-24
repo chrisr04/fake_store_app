@@ -1,3 +1,4 @@
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/home/home.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +12,22 @@ void main() {
   late MockAppConfig appConfig;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     appConfig = MockAppConfig();
   });
 
   testWidgets('HomeHeader widget test', (WidgetTester tester) async {
     await tester.pumpWidget(
-      Provider<AppConfig>(
-        create: (context) => appConfig,
+      MultiProvider(
+        providers: [
+          Provider<AppConfig>(
+            create: (context) => appConfig,
+          ),
+          FutureProvider<HomeSemantics>(
+            create: (context) => HomeSemantics.load(),
+            initialData: HomeSemantics.fromJson({}),
+          ),
+        ],
         child: MaterialApp(
           home: Scaffold(
             body: CustomScrollView(

@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets('NotFoundPage renders correctly and button works',

@@ -16,4 +16,8 @@ final _cartDependencies = [
       context.read<FakeCartRepository>(),
     ),
   ),
+  FutureProvider<CartSemantics>(
+    create: (context) => CartSemantics.load(),
+    initialData: CartSemantics.fromJson({}),
+  ),
 ];

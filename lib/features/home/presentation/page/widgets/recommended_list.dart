@@ -7,8 +7,11 @@ class RecommendedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<HomeSemantics>();
     return HorizontalProductList(
       title: StringValue.recommended,
+      semanticTitle: semantics.recommendedSubtitle.label,
+      semanticsSortKey: OrdinalSortKey(semantics.recommendedSubtitle.order),
       products: recommended,
     );
   }

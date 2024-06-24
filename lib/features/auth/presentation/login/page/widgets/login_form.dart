@@ -16,9 +16,9 @@ class _LoginFormState extends State<LoginForm> {
     return Form(
       key: _formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: double.infinity,
+          ExcludeSemantics(
             child: FakeTextLarge(
               StringValue.user,
               weight: FontWeight.w600,
@@ -33,8 +33,7 @@ class _LoginFormState extends State<LoginForm> {
             onChanged: viewModel.onChangeUserName,
           ),
           const FakeSpacerM(),
-          SizedBox(
-            width: double.infinity,
+          ExcludeSemantics(
             child: FakeTextLarge(
               StringValue.password,
               weight: FontWeight.w600,
@@ -49,13 +48,16 @@ class _LoginFormState extends State<LoginForm> {
             onChanged: viewModel.onChangePassword,
           ),
           const FakeSpacerXL(),
-          SizedBox(
-            width: double.infinity,
-            child: FakeButtonPrimary(
-              key: KeyValue.loginSignInBtn,
-              onPressed: _onTapButton,
-              size: FakeButtonSize.large,
-              label: StringValue.signIn,
+          Semantics(
+            sortKey: const OrdinalSortKey(double.maxFinite),
+            child: SizedBox(
+              width: double.infinity,
+              child: FakeButtonPrimary(
+                key: KeyValue.loginSignInBtn,
+                onPressed: _onTapButton,
+                size: FakeButtonSize.large,
+                label: StringValue.signIn,
+              ),
             ),
           ),
         ],

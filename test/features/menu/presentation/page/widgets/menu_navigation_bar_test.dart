@@ -1,4 +1,5 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:fake_store_app/features/menu/menu.dart';
@@ -13,7 +14,7 @@ void main() {
   late MockCartViewModel cartViewModel;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     cartViewModel = MockCartViewModel();
   });
 
@@ -40,8 +41,16 @@ void main() {
     );
 
     await tester.pumpWidget(
-      ChangeNotifierProvider<CartViewModel>(
-        create: (context) => cartViewModel,
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (context) => cartViewModel,
+          ),
+          FutureProvider<MenuSemantics>(
+            create: (context) => MenuSemantics.load(),
+            initialData: MenuSemantics.fromJson({}),
+          ),
+        ],
         child: MaterialApp(
           home: Scaffold(
             body: StatefulBuilder(

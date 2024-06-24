@@ -14,28 +14,36 @@ class FastSolutionsList extends StatelessWidget {
           weight: FontWeight.w600,
         ),
         const FakeSpacerM(),
-        FakeInformationCard(
-          onTap: () {},
-          title: StringValue.problemWithOrders,
-          titleWeight: FontWeight.w500,
+        MergeSemantics(
+          child: FakeInformationCard(
+            onTap: () {},
+            title: StringValue.problemWithOrders,
+            titleWeight: FontWeight.w500,
+          ),
         ),
         const FakeSpacerM(),
-        FakeInformationCard(
-          onTap: () {},
-          title: StringValue.problemWithBillingData,
-          titleWeight: FontWeight.w500,
+        MergeSemantics(
+          child: FakeInformationCard(
+            onTap: () {},
+            title: StringValue.problemWithBillingData,
+            titleWeight: FontWeight.w500,
+          ),
         ),
         const FakeSpacerM(),
-        FakeInformationCard(
-          onTap: () {},
-          title: StringValue.problemWithAddress,
-          titleWeight: FontWeight.w500,
+        MergeSemantics(
+          child: FakeInformationCard(
+            onTap: () {},
+            title: StringValue.problemWithAddress,
+            titleWeight: FontWeight.w500,
+          ),
         ),
         const FakeSpacerM(),
-        FakeInformationCard(
-          onTap: () {},
-          title: StringValue.tutorials,
-          titleWeight: FontWeight.w500,
+        MergeSemantics(
+          child: FakeInformationCard(
+            onTap: () {},
+            title: StringValue.tutorials,
+            titleWeight: FontWeight.w500,
+          ),
         ),
       ],
     );

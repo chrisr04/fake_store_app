@@ -16,4 +16,16 @@ final _catalogDependencies = [
       context.read<FakeCatalogRepository>(),
     ),
   ),
+  FutureProvider<CategoriesSemantics>(
+    create: (context) => CategoriesSemantics.load(),
+    initialData: CategoriesSemantics.fromJson({}),
+  ),
+  FutureProvider<CategoryDetailSemantics>(
+    create: (context) => CategoryDetailSemantics.load(),
+    initialData: CategoryDetailSemantics.fromJson({}),
+  ),
+  FutureProvider<ProductDetailSemantics>(
+    create: (context) => ProductDetailSemantics.load(),
+    initialData: ProductDetailSemantics.fromJson({}),
+  ),
 ];

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 
 part 'widgets/detail_header.dart';
 part 'widgets/product_info_body.dart';

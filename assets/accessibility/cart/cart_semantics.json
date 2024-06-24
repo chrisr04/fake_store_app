@@ -1,0 +1,26 @@
+{
+    "cartTitle": {
+        "label": "Gestiona los productos de tu carrito",
+        "order": 1.0
+    },
+    "deleteButton": {
+        "label": "Eliminar producto",
+        "order": 2.0
+    },
+    "addButton": {
+        "label": "Aumentar cantidad",
+        "order": 3.0
+    },
+    "removeButton": {
+        "label": "Disminuir cantidad",
+        "order": 4.0
+    },
+    "quantityInput": {
+        "label": "Modifica la cantidad",
+        "order": 5.0
+    },
+    "totalResume": {
+        "label": "El total de tu compra es",
+        "order": 6.0
+    }
+}

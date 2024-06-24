@@ -1,4 +1,5 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
@@ -15,7 +16,7 @@ void main() {
   late MockCartViewModel cartViewModel;
 
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     product = const ProductEntity(
       id: 1,
       title: 'Product 1',
@@ -32,23 +33,31 @@ void main() {
     cartViewModel = MockCartViewModel();
   });
 
+  Widget createWidget() => MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (_) => cartViewModel,
+          ),
+          FutureProvider(
+            create: (context) => ProductDetailSemantics.load(),
+            initialData: ProductDetailSemantics.fromJson({}),
+          ),
+        ],
+        child: MaterialApp(
+          home: Scaffold(
+            body: AddToCartFooter(
+              product: product,
+            ),
+          ),
+        ),
+      );
+
   group('AddToCartFooter', () {
     testWidgets('should show remove text on button when isProductAdded is true',
         (WidgetTester tester) async {
       when(() => cartViewModel.isProductAdded(product.id)).thenReturn(true);
 
-      await tester.pumpWidget(
-        ChangeNotifierProvider<CartViewModel>(
-          create: (_) => cartViewModel,
-          child: MaterialApp(
-            home: Scaffold(
-              body: AddToCartFooter(
-                product: product,
-              ),
-            ),
-          ),
-        ),
-      );
+      await tester.pumpWidget(createWidget());
 
       expect(find.text(StringValue.removeFromCart), findsOneWidget);
 
@@ -60,18 +69,7 @@ void main() {
         (WidgetTester tester) async {
       when(() => cartViewModel.isProductAdded(product.id)).thenReturn(false);
 
-      final testWidget = ChangeNotifierProvider<CartViewModel>(
-        create: (_) => cartViewModel,
-        child: MaterialApp(
-          home: Scaffold(
-            body: AddToCartFooter(
-              product: product,
-            ),
-          ),
-        ),
-      );
-
-      await tester.pumpWidget(testWidget);
+      await tester.pumpWidget(createWidget());
 
       expect(find.text(StringValue.addToCart), findsOneWidget);
 

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
@@ -36,7 +37,7 @@ void main() {
   late MockAppConfig appConfig;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     appConfig = MockAppConfig();
     repository = MockFakeHomeRepository();
     homeViewModel = MockHomeViewModel(repository);
@@ -64,12 +65,18 @@ void main() {
 
   Widget createWidget() => MultiProvider(
         providers: [
-          Provider<AppConfig>(create: (context) => appConfig),
+          Provider<AppConfig>(
+            create: (context) => appConfig,
+          ),
           ChangeNotifierProvider<HomeViewModel>(
             create: (context) => homeViewModel,
           ),
           ChangeNotifierProvider<CartViewModel>(
             create: (context) => cartViewModel,
+          ),
+          FutureProvider<HomeSemantics>(
+            create: (context) => HomeSemantics.load(),
+            initialData: HomeSemantics.fromJson({}),
           ),
         ],
         child: const MaterialApp(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/features/cart/presentation/viewmodel/cart_viewmodel.dart';
 
 part 'widgets/total_cart_footer.dart';

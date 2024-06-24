@@ -1,13 +1,15 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:provider/provider.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/catalog/catalog.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets('ProductInfoBody displays product information correctly',
@@ -26,9 +28,13 @@ void main() {
     );
 
     await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductInfoBody(product: product),
+      FutureProvider<ProductDetailSemantics>(
+        create: (context) => ProductDetailSemantics.load(),
+        initialData: ProductDetailSemantics.fromJson({}),
+        child: const MaterialApp(
+          home: Scaffold(
+            body: ProductInfoBody(product: product),
+          ),
         ),
       ),
     );

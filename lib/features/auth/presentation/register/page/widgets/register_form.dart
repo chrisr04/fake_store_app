@@ -17,10 +17,12 @@ class _RegisterFormState extends State<RegisterForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          FakeTextLarge(
-            StringValue.name,
-            weight: FontWeight.w600,
-            textAlign: TextAlign.start,
+          ExcludeSemantics(
+            child: FakeTextLarge(
+              StringValue.name,
+              weight: FontWeight.w600,
+              textAlign: TextAlign.start,
+            ),
           ),
           FakeTextField(
             key: KeyValue.registerNameInput,
@@ -29,10 +31,12 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          FakeTextLarge(
-            StringValue.lastName,
-            weight: FontWeight.w600,
-            textAlign: TextAlign.start,
+          ExcludeSemantics(
+            child: FakeTextLarge(
+              StringValue.lastName,
+              weight: FontWeight.w600,
+              textAlign: TextAlign.start,
+            ),
           ),
           FakeTextField(
             key: KeyValue.registerLastNameInput,
@@ -41,10 +45,12 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          FakeTextLarge(
-            StringValue.email,
-            weight: FontWeight.w600,
-            textAlign: TextAlign.start,
+          ExcludeSemantics(
+            child: FakeTextLarge(
+              StringValue.email,
+              weight: FontWeight.w600,
+              textAlign: TextAlign.start,
+            ),
           ),
           FakeTextField(
             key: KeyValue.registerEmailInput,
@@ -54,10 +60,12 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequiredEmail,
           ),
           const FakeSpacerM(),
-          FakeTextLarge(
-            StringValue.phone,
-            weight: FontWeight.w600,
-            textAlign: TextAlign.start,
+          ExcludeSemantics(
+            child: FakeTextLarge(
+              StringValue.phone,
+              weight: FontWeight.w600,
+              textAlign: TextAlign.start,
+            ),
           ),
           FakeTextField(
             key: KeyValue.registerPhoneInput,
@@ -67,10 +75,12 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          FakeTextLarge(
-            StringValue.user,
-            weight: FontWeight.w600,
-            textAlign: TextAlign.start,
+          ExcludeSemantics(
+            child: FakeTextLarge(
+              StringValue.user,
+              weight: FontWeight.w600,
+              textAlign: TextAlign.start,
+            ),
           ),
           FakeTextField(
             key: KeyValue.registerUsernameInput,
@@ -79,10 +89,12 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerM(),
-          FakeTextLarge(
-            StringValue.password,
-            weight: FontWeight.w600,
-            textAlign: TextAlign.start,
+          ExcludeSemantics(
+            child: FakeTextLarge(
+              StringValue.password,
+              weight: FontWeight.w600,
+              textAlign: TextAlign.start,
+            ),
           ),
           FakeTextFieldObscure(
             key: KeyValue.registerPasswordInput,
@@ -91,13 +103,16 @@ class _RegisterFormState extends State<RegisterForm> {
             validator: FormValidatorHelper.isRequired,
           ),
           const FakeSpacerXL(),
-          SizedBox(
-            width: double.infinity,
-            child: FakeButtonPrimary(
-              key: KeyValue.registerSignUpBtn,
-              onPressed: _onTapButton,
-              size: FakeButtonSize.large,
-              label: StringValue.signUp,
+          Semantics(
+            sortKey: const OrdinalSortKey(double.maxFinite),
+            child: SizedBox(
+              width: double.infinity,
+              child: FakeButtonPrimary(
+                key: KeyValue.registerSignUpBtn,
+                onPressed: _onTapButton,
+                size: FakeButtonSize.large,
+                label: StringValue.signUp,
+              ),
             ),
           ),
         ],

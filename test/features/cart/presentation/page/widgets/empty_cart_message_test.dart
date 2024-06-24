@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets('EmptyCartMessage displays the correct content',

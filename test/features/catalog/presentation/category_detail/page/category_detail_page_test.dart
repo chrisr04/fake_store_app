@@ -1,3 +1,4 @@
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/catalog/catalog.dart';
@@ -13,7 +14,7 @@ class MockCategoryDetailViewModel extends Mock
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets(
@@ -28,8 +29,16 @@ void main() {
     );
 
     await tester.pumpWidget(
-      ChangeNotifierProvider<CategoryDetailViewModel>(
-        create: (_) => mockViewModel,
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CategoryDetailViewModel>(
+            create: (_) => mockViewModel,
+          ),
+          FutureProvider<CategoryDetailSemantics>(
+            create: (context) => CategoryDetailSemantics.load(),
+            initialData: CategoryDetailSemantics.fromJson({}),
+          ),
+        ],
         child: MaterialApp(
           navigatorKey: FakeNavigator.menuNavigatorKey,
           onGenerateRoute: (settings) => MaterialPageRoute(

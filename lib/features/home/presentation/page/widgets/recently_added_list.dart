@@ -7,8 +7,11 @@ class RecentlyAddedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<HomeSemantics>();
     return HorizontalProductList(
       title: StringValue.recentlyAdded,
+      semanticTitle: semantics.recentlyAddedSubtitle.label,
+      semanticsSortKey: OrdinalSortKey(semantics.recentlyAddedSubtitle.order),
       products: recentlyAdded,
     );
   }

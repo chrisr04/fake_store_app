@@ -7,7 +7,7 @@ import 'package:fake_store_app/features/support/support.dart';
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets('FastSolutionsList renders correctly',

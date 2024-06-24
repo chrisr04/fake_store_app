@@ -1,0 +1,22 @@
+{
+    "homeItem": {
+        "label": "Ir al inicio",
+        "order": 1.0
+    },
+    "catalogItem": {
+        "label": "Ir al catálogo",
+        "order": 2.0
+    },
+    "supportItem": {
+        "label": "Ir a soporte",
+        "order": 3.0
+    },
+    "cartItemCount": {
+        "label": "La cantidad de productos en el carrito es",
+        "order": 4.0
+    },
+    "cartItem": {
+        "label": "Ir al carrito",
+        "order": 5.0
+    }
+}

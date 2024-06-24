@@ -1,3 +1,4 @@
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class MockCartViewModel extends Mock implements CartViewModel {}
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets('CartPage has a title row, product list, and footer',
@@ -19,8 +20,16 @@ void main() {
     when(() => mockViewModel.state).thenReturn(const CartState());
 
     await tester.pumpWidget(
-      ChangeNotifierProvider<CartViewModel>(
-        create: (context) => mockViewModel,
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (context) => mockViewModel,
+          ),
+          FutureProvider<CartSemantics>(
+            create: (context) => CartSemantics.load(),
+            initialData: CartSemantics.fromJson({}),
+          ),
+        ],
         child: const MaterialApp(
           home: CartPage(),
         ),

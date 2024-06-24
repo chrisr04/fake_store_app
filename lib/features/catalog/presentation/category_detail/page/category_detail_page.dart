@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/navigation/navigation.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/features/catalog/presentation/category_detail/viewmodel/category_detail_viewmodel.dart';
 
 part 'widgets/category_header.dart';
@@ -33,11 +35,15 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<CategoryDetailSemantics>();
     return Scaffold(
       appBar: FakeSearchAppBar(
         hintText: StringValue.searchInFakeStore,
         showBackButton: true,
         readOnly: true,
+        semanticLabel: semantics.searchBarHint.label,
+        semanticsSortKey: OrdinalSortKey(semantics.searchBarHint.order),
+        excludeSemantics: true,
         onTap: () => FakeNavigator.menu.pushNamed(AppRoutes.search),
       ),
       body: CustomScrollView(

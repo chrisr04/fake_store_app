@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
 
-import '../../../../utils/utils.dart';
+import '../../../../helpers/helpers.dart';
 
 class MockFakeCartRepository extends Mock implements FakeCartRepository {}
 

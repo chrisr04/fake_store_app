@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:fake_store_app/common/common.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/features/search/presentation/viewmodel/search_viewmodel.dart';
 
 part 'widgets/no_search_message.dart';
@@ -27,12 +29,16 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<SearchSemantics>();
     final viewModel = context.watch<SearchViewModel>();
     return Scaffold(
       appBar: FakeSearchAppBar(
         key: KeyValue.searchQueryInput,
         hintText: StringValue.searchByNameOrDescription,
         showBackButton: true,
+        semanticLabel: semantics.searchBarHint.label,
+        semanticsSortKey: OrdinalSortKey(semantics.searchBarHint.order),
+        semanticFocused: true,
         onSubmit: viewModel.onSearchProducts,
       ),
       body: switch (viewModel.state.type) {

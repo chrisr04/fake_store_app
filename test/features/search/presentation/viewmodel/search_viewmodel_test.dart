@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_store_app/features/search/search.dart';
 
-import '../../../../utils/change_notifier_test_util.dart';
+import '../../../../helpers/helpers.dart';
 
 class MockFakeSearchRepository extends Mock implements FakeSearchRepository {}
 

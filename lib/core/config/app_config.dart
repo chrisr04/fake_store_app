@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:fake_api/fake_api.dart';
 import 'package:flutter/services.dart';
 
@@ -9,28 +8,49 @@ class AppConfig {
 
   factory AppConfig() => _instance;
 
+  // User
   UserEntity? _user;
-  static Map<String, String> _strings = {};
-  static Map<String, String> _images = {};
 
   UserEntity? get currentUser => _user;
-
-  static Future<void> init() async {
-    final encodedStrings = await rootBundle.loadString(
-      'assets/values/strings.json',
-    );
-    final encodedImages = await rootBundle.loadString(
-      'assets/values/images.json',
-    );
-    _strings = Map<String, String>.from(jsonDecode(encodedStrings));
-    _images = Map<String, String>.from(jsonDecode(encodedImages));
-  }
-
-  static String getString(String key) => _strings[key] ?? '';
-
-  static String getImage(String key) => _images[key] ?? '';
 
   void setLoggedUser(UserEntity user) {
     _user = user;
   }
+
+  void clearLoggedUser() {
+    _user = null;
+  }
+
+  // Local assets
+  static Map<String, String> strings = {};
+
+  static Map<String, String> images = {};
+
+  static Future<void> initAssets() async {
+    strings = await loadStrings();
+    images = await loadImages();
+  }
+
+  static Future<Map<String, String>> loadStrings() async {
+    final encodedStrings = await rootBundle.loadString(
+      'assets/values/strings.json',
+    );
+    return Map<String, String>.from(jsonDecode(encodedStrings));
+  }
+
+  static Future<Map<String, String>> loadImages() async {
+    final encodedImages = await rootBundle.loadString(
+      'assets/values/images.json',
+    );
+    return Map<String, String>.from(jsonDecode(encodedImages));
+  }
+
+  static Future<Map<String, dynamic>> loadSemantics(String path) async {
+    final encodedSemantics = await rootBundle.loadString(path);
+    return Map<String, dynamic>.from(jsonDecode(encodedSemantics));
+  }
+
+  static String getString(String key) => strings[key] ?? '';
+
+  static String getImage(String key) => images[key] ?? '';
 }

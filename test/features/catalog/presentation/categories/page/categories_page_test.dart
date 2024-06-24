@@ -4,20 +4,26 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/navigation/navigation.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/features/catalog/catalog.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   group('CategoriesPage', () {
     testWidgets('CategoriesPage displays correctly',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          navigatorKey: FakeNavigator.menuNavigatorKey,
-          home: const CategoriesPage(),
+        FutureProvider<CategoriesSemantics>(
+          create: (context) => CategoriesSemantics.load(),
+          initialData: CategoriesSemantics.fromJson({}),
+          child: MaterialApp(
+            navigatorKey: FakeNavigator.menuNavigatorKey,
+            home: const CategoriesPage(),
+          ),
         ),
       );
 
@@ -32,13 +38,17 @@ void main() {
     testWidgets('CategoriesPage navigates to electronics category',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          navigatorKey: FakeNavigator.menuNavigatorKey,
-          home: const CategoriesPage(),
-          onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(
-                child: Text('Electronics'),
+        FutureProvider<CategoriesSemantics>(
+          create: (context) => CategoriesSemantics.load(),
+          initialData: CategoriesSemantics.fromJson({}),
+          child: MaterialApp(
+            navigatorKey: FakeNavigator.menuNavigatorKey,
+            home: const CategoriesPage(),
+            onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text('Electronics'),
+                ),
               ),
             ),
           ),
@@ -54,13 +64,17 @@ void main() {
     testWidgets('CategoriesPage navigates to men clothing category',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          navigatorKey: FakeNavigator.menuNavigatorKey,
-          home: const CategoriesPage(),
-          onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(
-                child: Text('Men clothing'),
+        FutureProvider<CategoriesSemantics>(
+          create: (context) => CategoriesSemantics.load(),
+          initialData: CategoriesSemantics.fromJson({}),
+          child: MaterialApp(
+            navigatorKey: FakeNavigator.menuNavigatorKey,
+            home: const CategoriesPage(),
+            onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text('Men clothing'),
+                ),
               ),
             ),
           ),
@@ -76,13 +90,17 @@ void main() {
     testWidgets('CategoriesPage navigates to women clothing category',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          navigatorKey: FakeNavigator.menuNavigatorKey,
-          home: const CategoriesPage(),
-          onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(
-                child: Text('Women clothing'),
+        FutureProvider<CategoriesSemantics>(
+          create: (context) => CategoriesSemantics.load(),
+          initialData: CategoriesSemantics.fromJson({}),
+          child: MaterialApp(
+            navigatorKey: FakeNavigator.menuNavigatorKey,
+            home: const CategoriesPage(),
+            onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text('Women clothing'),
+                ),
               ),
             ),
           ),
@@ -98,13 +116,17 @@ void main() {
     testWidgets('CategoriesPage navigates to jewelery category',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          navigatorKey: FakeNavigator.menuNavigatorKey,
-          home: const CategoriesPage(),
-          onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(
-                child: Text('Jewelery'),
+        FutureProvider<CategoriesSemantics>(
+          create: (context) => CategoriesSemantics.load(),
+          initialData: CategoriesSemantics.fromJson({}),
+          child: MaterialApp(
+            navigatorKey: FakeNavigator.menuNavigatorKey,
+            home: const CategoriesPage(),
+            onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text('Jewelery'),
+                ),
               ),
             ),
           ),
@@ -120,13 +142,17 @@ void main() {
     testWidgets('CategoriesPage navigates to search page',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          navigatorKey: FakeNavigator.menuNavigatorKey,
-          home: const CategoriesPage(),
-          onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(
-                child: Text('Search'),
+        FutureProvider<CategoriesSemantics>(
+          create: (context) => CategoriesSemantics.load(),
+          initialData: CategoriesSemantics.fromJson({}),
+          child: MaterialApp(
+            navigatorKey: FakeNavigator.menuNavigatorKey,
+            home: const CategoriesPage(),
+            onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text('Search'),
+                ),
               ),
             ),
           ),

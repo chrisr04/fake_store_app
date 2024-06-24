@@ -8,7 +8,7 @@ import 'package:mocktail_image_network/mocktail_image_network.dart';
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   testWidgets('DetailHeader displays correctly', (WidgetTester tester) async {

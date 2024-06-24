@@ -1,0 +1,18 @@
+{
+    "productTitle": {
+        "label": "El producto",
+        "order": 1.0
+    },
+    "productPrice": {
+        "label": "Cuesta",
+        "order": 2.0
+    },
+    "productDescription": {
+        "label": "Más información",
+        "order": 3.0
+    },
+    "productCategory": {
+        "label": "Pertenece a la categoría",
+        "order": 4.0
+    }
+}

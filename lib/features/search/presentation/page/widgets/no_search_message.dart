@@ -5,16 +5,19 @@ class NoSearchMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverFillRemaining(
-          hasScrollBody: false,
-          child: FakeInformationTemplate(
-            imagePath: AssetValue.searchIllustrationPng,
-            message: StringValue.findWhatYouLikeMost,
+    return Semantics(
+      sortKey: const OrdinalSortKey(double.maxFinite),
+      child: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: FakeInformationTemplate(
+              imagePath: AssetValue.searchIllustrationPng,
+              message: StringValue.findWhatYouLikeMost,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

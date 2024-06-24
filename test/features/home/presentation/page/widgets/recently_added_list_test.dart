@@ -1,4 +1,5 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
@@ -15,7 +16,7 @@ void main() {
   late MockCartViewModel cartViewModel;
 
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     cartViewModel = MockCartViewModel();
     when(() => cartViewModel.isProductAdded(any())).thenReturn(false);
   });
@@ -40,8 +41,16 @@ void main() {
 
       await mockNetworkImages(
         () async => tester.pumpWidget(
-          ChangeNotifierProvider<CartViewModel>(
-            create: (context) => cartViewModel,
+          MultiProvider(
+            providers: [
+              ChangeNotifierProvider<CartViewModel>(
+                create: (context) => cartViewModel,
+              ),
+              FutureProvider<HomeSemantics>(
+                create: (context) => HomeSemantics.load(),
+                initialData: HomeSemantics.fromJson({}),
+              ),
+            ],
             child: const MaterialApp(
               home: Scaffold(
                 body: RecentlyAddedList(

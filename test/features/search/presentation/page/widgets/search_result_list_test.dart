@@ -15,7 +15,7 @@ void main() {
   late MockCartViewModel cartViewModel;
 
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     cartViewModel = MockCartViewModel();
   });
 

@@ -173,7 +173,7 @@ A continuación hay algunos ejemplos de como se utilizan:
 **Cargar los archivos**
 
 ```dart
-AppConfig.init();
+AppConfig.initAssets();
 ```
 
 **Obtener textos**

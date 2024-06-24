@@ -5,29 +5,34 @@ class SupportHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        FakeTextHeading3(
-          StringValue.helloDoYouNeedHelp,
-          weight: FontWeight.w600,
-        ),
-        const FakeSpacerS(),
-        FakeTextLarge(
-          StringValue.weAreHereForHelpYouContactUs,
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
-        ),
-        const FakeSpacerL(),
-        FakeAvatarStack(
-          images: List.generate(
-            5,
-            (index) => AssetImage(
-              AssetValue.supportFaceJpg(index + 1),
+    return MergeSemantics(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Semantics(
+            focused: true,
+            child: FakeTextHeading3(
+              StringValue.helloDoYouNeedHelp,
+              weight: FontWeight.w600,
             ),
           ),
-        ),
-        const FakeSpacerL(),
-      ],
+          const FakeSpacerS(),
+          FakeTextLarge(
+            StringValue.weAreHereForHelpYouContactUs,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          ),
+          const FakeSpacerL(),
+          FakeAvatarStack(
+            images: List.generate(
+              5,
+              (index) => AssetImage(
+                AssetValue.supportFaceJpg(index + 1),
+              ),
+            ),
+          ),
+          const FakeSpacerL(),
+        ],
+      ),
     );
   }
 }

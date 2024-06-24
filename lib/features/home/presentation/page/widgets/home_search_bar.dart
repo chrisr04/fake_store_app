@@ -5,26 +5,32 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: FakeSpacing.md,
-      ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.shadow.withOpacity(0.08),
-              offset: const Offset(0.0, 1.0),
-              blurRadius: 12.0,
-            ),
-          ],
+    final semantics = context.watch<HomeSemantics>();
+    return Semantics(
+      label: semantics.searchBarHint.label,
+      sortKey: OrdinalSortKey(semantics.searchBarHint.order),
+      excludeSemantics: true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: FakeSpacing.md,
         ),
-        child: FakeTextFieldSearch(
-          onTap: () => FakeNavigator.menu.pushNamed(
-            AppRoutes.search,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).colorScheme.shadow.withOpacity(0.08),
+                offset: const Offset(0.0, 1.0),
+                blurRadius: 12.0,
+              ),
+            ],
           ),
-          readOnly: true,
-          hintText: StringValue.searchInFakeStore,
+          child: FakeTextFieldSearch(
+            onTap: () => FakeNavigator.menu.pushNamed(
+              AppRoutes.search,
+            ),
+            readOnly: true,
+            hintText: StringValue.searchInFakeStore,
+          ),
         ),
       ),
     );

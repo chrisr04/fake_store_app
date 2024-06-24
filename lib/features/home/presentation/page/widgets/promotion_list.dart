@@ -7,8 +7,11 @@ class PromotionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<HomeSemantics>();
     return HorizontalProductList(
       title: StringValue.promotions,
+      semanticTitle: semantics.promotionSubtitle.label,
+      semanticsSortKey: OrdinalSortKey(semantics.promotionSubtitle.order),
       products: promotions,
     );
   }

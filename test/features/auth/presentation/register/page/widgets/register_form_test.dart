@@ -15,7 +15,7 @@ void main() {
   late UserEntity user;
 
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     registerViewModel = MockRegisterViewModel();
     user = const UserEntity(
       id: 1,

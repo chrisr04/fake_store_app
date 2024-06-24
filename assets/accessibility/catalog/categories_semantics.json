@@ -1,0 +1,10 @@
+{
+    "searchBarHint": {
+        "label": "Busca tus productos preferidos tocando dos veces en la barra de búsquedas",
+        "order": 1.0
+    },
+    "categoryItem": {
+        "label": "Categoría de",
+        "order": 2.0
+    }
+}

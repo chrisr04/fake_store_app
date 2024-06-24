@@ -16,4 +16,8 @@ final _searchDependencies = [
       context.read<FakeSearchRepository>(),
     ),
   ),
+  FutureProvider<SearchSemantics>(
+    create: (context) => SearchSemantics.load(),
+    initialData: SearchSemantics.fromJson({}),
+  ),
 ];

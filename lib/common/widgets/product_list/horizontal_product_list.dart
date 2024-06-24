@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_api/fake_api.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
@@ -11,10 +13,14 @@ class HorizontalProductList extends StatelessWidget {
     super.key,
     required this.title,
     required this.products,
+    this.semanticTitle = '',
+    this.semanticsSortKey,
   });
 
   final String title;
   final List<ProductEntity> products;
+  final String semanticTitle;
+  final SemanticsSortKey? semanticsSortKey;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +32,18 @@ class HorizontalProductList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: FakeSpacing.md,
-            ).copyWith(
-              bottom: FakeSpacing.sl,
+          Semantics(
+            label: semanticTitle,
+            excludeSemantics: semanticTitle.isNotEmpty,
+            sortKey: semanticsSortKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: FakeSpacing.md,
+              ).copyWith(
+                bottom: FakeSpacing.sl,
+              ),
+              child: FakeTextHeading6(title),
             ),
-            child: FakeTextHeading6(title),
           ),
           SizedBox(
             width: double.infinity,

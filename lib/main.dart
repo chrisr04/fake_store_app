@@ -5,7 +5,7 @@ import 'package:fake_store_app/navigation/navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppConfig.init();
+  await AppConfig.initAssets();
   runApp(const MainApp());
 }
 

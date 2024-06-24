@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
@@ -35,20 +36,28 @@ void main() {
   late MockCartViewModel cartViewModel;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     repository = MockFakeSearchRepository();
     searchViewModel = MockSearchViewModel(repository);
     cartViewModel = MockCartViewModel();
     when(() => cartViewModel.isProductAdded(any())).thenReturn(false);
   });
 
-  Widget createWidget() => ChangeNotifierProvider<CartViewModel>(
-        create: (context) => cartViewModel,
-        child: ChangeNotifierProvider<SearchViewModel>(
-          create: (_) => searchViewModel,
-          child: const MaterialApp(
-            home: SearchPage(),
+  Widget createWidget() => MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (context) => cartViewModel,
           ),
+          ChangeNotifierProvider<SearchViewModel>(
+            create: (_) => searchViewModel,
+          ),
+          FutureProvider<SearchSemantics>(
+            create: (context) => SearchSemantics.load(),
+            initialData: SearchSemantics.fromJson({}),
+          ),
+        ],
+        child: const MaterialApp(
+          home: SearchPage(),
         ),
       );
 

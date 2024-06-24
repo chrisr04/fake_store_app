@@ -70,8 +70,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v0.0.5"
-      resolved-ref: b13b5d8f784bc93445e1adce6091c943c867fee4
+      ref: "v0.0.6"
+      resolved-ref: c8c37699512216d1155c2ee6b35671d1f86e8cca
       url: "https://github.com/chrisr04/fake_store_ds"
     source: git
     version: "0.0.1"

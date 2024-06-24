@@ -3,9 +3,8 @@ import 'package:fake_api/fake_api.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_store_app/features/auth/auth.dart';
-import 'package:fake_store_app/features/auth/presentation/register/helpers/register_form_field.dart';
 
-import '../../../../../utils/utils.dart';
+import '../../../../../helpers/helpers.dart';
 
 class MockFakeAuthRepository extends Mock implements FakeAuthRepository {}
 

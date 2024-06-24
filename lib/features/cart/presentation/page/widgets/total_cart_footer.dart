@@ -5,6 +5,7 @@ class TotalCartFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<CartSemantics>();
     final state = context.watch<CartViewModel>().state;
     final products = state.cart?.products ?? [];
     final total = _getTotal(products);
@@ -25,16 +26,22 @@ class TotalCartFooter extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FakeTextHeading6(StringValue.total),
-                Flexible(
-                  child: FakeTextHeading5(
-                    '\$${total.toStringAsFixed(2).replaceAll('.', ',')}',
+            MergeSemantics(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Semantics(
+                    label: semantics.totalResume.label,
+                    excludeSemantics: true,
+                    child: FakeTextHeading6(StringValue.total),
                   ),
-                ),
-              ],
+                  Flexible(
+                    child: FakeTextHeading5(
+                      '\$${total.toStringAsFixed(2).replaceAll('.', ',')}',
+                    ),
+                  ),
+                ],
+              ),
             ),
             const FakeSpacerM(),
             SizedBox(

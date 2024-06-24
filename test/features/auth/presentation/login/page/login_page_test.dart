@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class MockLoginViewModel extends LoginViewModel {
 
 void main() {
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
   });
 
   group('LoginPage', () {
@@ -57,6 +58,10 @@ void main() {
           providers: [
             ChangeNotifierProvider<LoginViewModel>.value(
               value: loginViewModel,
+            ),
+            FutureProvider<LoginSemantics>(
+              create: (context) => LoginSemantics.load(),
+              initialData: LoginSemantics.fromJson({}),
             ),
             Provider<AppConfig>.value(value: appConfig),
           ],

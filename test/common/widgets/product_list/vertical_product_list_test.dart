@@ -18,7 +18,7 @@ void main() {
   late CartProductEntity cartProduct;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     cartViewModel = MockCartViewModel();
     products = const [
       ProductEntity(

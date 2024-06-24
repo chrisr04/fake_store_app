@@ -12,7 +12,7 @@ class MockLoginViewModel extends Mock implements LoginViewModel {}
 void main() {
   late MockLoginViewModel loginViewModel;
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     loginViewModel = MockLoginViewModel();
   });
 

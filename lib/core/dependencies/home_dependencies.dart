@@ -16,4 +16,8 @@ final _homeDepdencencies = [
       context.read<FakeHomeRepository>(),
     )..onLoadSections(),
   ),
+  FutureProvider<HomeSemantics>(
+    create: (context) => HomeSemantics.load(),
+    initialData: HomeSemantics.fromJson({}),
+  ),
 ];

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/core/config/app_config.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
@@ -46,7 +47,7 @@ void main() {
   late UserEntity user;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     cart = CartEntity(
       id: 123,
       userId: 456,
@@ -95,26 +96,46 @@ void main() {
         .thenAnswer((_) async => Right(cart));
   });
 
-  Widget createMenuPage() {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<CartViewModel>(
-          create: (_) => cartViewModel,
+  Widget createMenuPage() => MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (_) => cartViewModel,
+          ),
+          ChangeNotifierProvider<HomeViewModel>(
+            create: (_) => homeViewModel,
+          ),
+          ChangeNotifierProvider<SearchViewModel>(
+            create: (_) => searchViewModel,
+          ),
+          Provider<AppConfig>(
+            create: (_) => appConfig,
+          ),
+          FutureProvider<MenuSemantics>(
+            create: (context) => MenuSemantics.load(),
+            initialData: MenuSemantics.fromJson({}),
+          ),
+          FutureProvider<HomeSemantics>(
+            create: (context) => HomeSemantics.load(),
+            initialData: HomeSemantics.fromJson({}),
+          ),
+          FutureProvider<CategoriesSemantics>(
+            create: (context) => CategoriesSemantics.load(),
+            initialData: CategoriesSemantics.fromJson({}),
+          ),
+          FutureProvider<CartSemantics>(
+            create: (context) => CartSemantics.load(),
+            initialData: CartSemantics.fromJson({}),
+          ),
+          FutureProvider<SearchSemantics>(
+            create: (context) => SearchSemantics.load(),
+            initialData: SearchSemantics.fromJson({}),
+          ),
+        ],
+        child: MaterialApp(
+          home: const MenuPage(),
+          navigatorKey: FakeNavigator.rootNavigatorKey,
         ),
-        ChangeNotifierProvider<HomeViewModel>(
-          create: (_) => homeViewModel,
-        ),
-        ChangeNotifierProvider<SearchViewModel>(
-          create: (_) => searchViewModel,
-        ),
-        Provider<AppConfig>(create: (_) => appConfig),
-      ],
-      child: MaterialApp(
-        home: const MenuPage(),
-        navigatorKey: FakeNavigator.rootNavigatorKey,
-      ),
-    );
-  }
+      );
 
   testWidgets('MenuPage navigation works correctly',
       (WidgetTester tester) async {

@@ -1,4 +1,5 @@
 import 'package:fake_api/fake_api.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/core/core.dart';
 import 'package:fake_store_app/features/cart/cart.dart';
@@ -20,7 +21,7 @@ void main() {
   late ProductEntity product;
 
   setUpAll(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     categoryDetailViewModel = MockCategoryDetailViewModel();
     cartViewModel = MockCartViewModel();
     product = const ProductEntity(
@@ -38,17 +39,25 @@ void main() {
     when(() => cartViewModel.isProductAdded(product.id)).thenReturn(false);
   });
 
-  Widget createWidget() => ChangeNotifierProvider<CartViewModel>(
-        create: (context) => cartViewModel,
-        child: ChangeNotifierProvider<CategoryDetailViewModel>(
-          create: (context) => categoryDetailViewModel,
-          child: const MaterialApp(
-            home: Scaffold(
-              body: CustomScrollView(
-                slivers: [
-                  CategoryProducts(),
-                ],
-              ),
+  Widget createWidget() => MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (context) => cartViewModel,
+          ),
+          ChangeNotifierProvider<CategoryDetailViewModel>(
+            create: (context) => categoryDetailViewModel,
+          ),
+          FutureProvider<CategoryDetailSemantics>(
+            create: (context) => CategoryDetailSemantics.load(),
+            initialData: CategoryDetailSemantics.fromJson({}),
+          ),
+        ],
+        child: const MaterialApp(
+          home: Scaffold(
+            body: CustomScrollView(
+              slivers: [
+                CategoryProducts(),
+              ],
             ),
           ),
         ),

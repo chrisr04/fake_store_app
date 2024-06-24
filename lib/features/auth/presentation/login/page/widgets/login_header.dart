@@ -5,6 +5,7 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<LoginSemantics>();
     return Column(
       children: [
         FakeImageAsset(
@@ -12,7 +13,12 @@ class LoginHeader extends StatelessWidget {
           height: 200.0,
         ),
         const FakeSpacerXL(),
-        FakeTextHeading3(StringValue.login),
+        Semantics(
+          label: semantics.logInTitle.label,
+          sortKey: OrdinalSortKey(semantics.logInTitle.order),
+          excludeSemantics: true,
+          child: FakeTextHeading3(StringValue.login),
+        ),
         const FakeSpacerL(),
       ],
     );

@@ -5,6 +5,7 @@ class CartProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<CartSemantics>();
     final viewModel = context.watch<CartViewModel>();
     final products = viewModel.state.cart?.products ?? [];
 
@@ -25,6 +26,10 @@ class CartProductList extends StatelessWidget {
               title: product.title,
               price: product.price,
               deleteButtonText: StringValue.delete,
+              deleteSemanticsLabel: semantics.deleteButton.label,
+              removeSemanticsLabel: semantics.removeButton.label,
+              addSemanticsLabel: semantics.addButton.label,
+              inputSemanticsLabel: semantics.quantityInput.label,
               quantityValue: product.quantity.toString(),
               onDeleteButtonPressed: () {
                 viewModel.onRemoveProduct(product.productId);

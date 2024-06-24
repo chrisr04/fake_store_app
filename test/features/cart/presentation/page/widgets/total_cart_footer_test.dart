@@ -5,6 +5,7 @@ import 'package:fake_store_app/features/cart/cart.dart';
 import 'package:fake_store_ds/fake_store_ds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +17,7 @@ void main() {
   late CartEntity emptyCart;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
 
     cartViewModel = MockCartViewModel();
     emptyCart = CartEntity(
@@ -41,23 +42,29 @@ void main() {
     );
   });
 
-  Widget createWidgetUnderTest() {
-    return ChangeNotifierProvider<CartViewModel>(
-      create: (context) => cartViewModel,
-      child: const MaterialApp(
-        home: Scaffold(
-          body: TotalCartFooter(),
+  Widget createWidget() => MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CartViewModel>(
+            create: (context) => cartViewModel,
+          ),
+          FutureProvider<CartSemantics>(
+            create: (context) => CartSemantics.load(),
+            initialData: CartSemantics.fromJson({}),
+          ),
+        ],
+        child: const MaterialApp(
+          home: Scaffold(
+            body: TotalCartFooter(),
+          ),
         ),
-      ),
-    );
-  }
+      );
 
   group('TotalCartFooter', () {
     testWidgets('displays nothing when cart is empty',
         (WidgetTester tester) async {
       when(() => cartViewModel.state).thenReturn(CartState(cart: emptyCart));
 
-      await tester.pumpWidget(createWidgetUnderTest());
+      await tester.pumpWidget(createWidget());
 
       expect(find.byType(SizedBox), findsOneWidget);
     });
@@ -66,7 +73,7 @@ void main() {
         (WidgetTester tester) async {
       when(() => cartViewModel.state).thenReturn(CartState(cart: filledCart));
 
-      await tester.pumpWidget(createWidgetUnderTest());
+      await tester.pumpWidget(createWidget());
 
       expect(find.text(StringValue.total), findsOneWidget);
       expect(find.text('\$40,00'), findsOneWidget);
@@ -78,7 +85,7 @@ void main() {
         (WidgetTester tester) async {
       when(() => cartViewModel.state).thenReturn(CartState(cart: filledCart));
 
-      await tester.pumpWidget(createWidgetUnderTest());
+      await tester.pumpWidget(createWidget());
 
       expect(find.text(StringValue.total), findsOneWidget);
       expect(find.text('\$40,00'), findsOneWidget);

@@ -15,9 +15,11 @@ class DetailHeader extends StatelessWidget {
             bottom: FakeSpacing.lg,
             left: 0.0,
             right: 0.0,
-            child: FakeImageNetwork(
-              url: product.image,
-              height: 200.0,
+            child: ExcludeSemantics(
+              child: FakeImageNetwork(
+                url: product.image,
+                height: 200.0,
+              ),
             ),
           ),
           Positioned.fill(
@@ -34,11 +36,14 @@ class DetailHeader extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             top: 0.0,
             left: 0.0,
             right: 0.0,
-            child: FakeLightAppBar(),
+            child: Semantics(
+              sortKey: const OrdinalSortKey(double.maxFinite),
+              child: const FakeLightAppBar(),
+            ),
           ),
         ],
       ),

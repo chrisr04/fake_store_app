@@ -1,0 +1,26 @@
+{
+    "address": {
+        "label": "Bienvenido a Fake Store, tus pedidos se enviaran a la dirección",
+        "order": 1.0
+    },
+    "searchBarHint": {
+        "label": "Busca tus productos preferidos tocando dos veces en la barra de búsquedas",
+        "order": 2.0
+    },
+    "promotionSubtitle": {
+        "label": "Descubre nuestras promociones",
+        "order": 3.0
+    },
+    "mostBoughtSubtitle": {
+        "label": "Estos son los productos que mas se vendieron",
+        "order": 4.0
+    },
+    "recommendedSubtitle": {
+        "label": "Estos son los productos que te recomendamos",
+        "order": 5.0
+    },
+    "recentlyAddedSubtitle": {
+        "label": "Estos son los productos que agregamos hace poco",
+        "order": 6.0
+    }
+}

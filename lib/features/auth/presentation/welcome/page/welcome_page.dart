@@ -27,12 +27,20 @@ class WelcomePage extends StatelessWidget {
                       height: 250.0,
                     ),
                     const FakeSpacerXXL(),
-                    FakeTextHeading3(StringValue.welcome),
-                    const FakeSpacerS(),
-                    FakeTextMedium(
-                      StringValue.weAreGladToHaveYouHere,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      textAlign: TextAlign.center,
+                    MergeSemantics(
+                      child: Column(
+                        children: [
+                          FakeTextHeading3(StringValue.welcome),
+                          const FakeSpacerS(),
+                          FakeTextMedium(
+                            StringValue.weAreGladToHaveYouHere,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
                     ),
                     const FakeSpacerXL(),
                     SizedBox(

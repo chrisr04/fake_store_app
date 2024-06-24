@@ -8,6 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_store_app/common/common.dart';
 import 'package:fake_store_app/features/auth/auth.dart';
 import 'package:fake_store_app/navigation/navigation.dart';
+import 'package:fake_store_app/accessibility/accessibility.dart';
 
 class MockAppConfig extends Mock implements AppConfig {}
 
@@ -34,7 +35,7 @@ void main() {
   late UserEntity user;
 
   setUp(() async {
-    await AppConfig.init();
+    await AppConfig.initAssets();
     repository = MockFakeAuthRepository();
     registerViewModel = MockRegisterViewModel(repository);
     appConfig = MockAppConfig();
@@ -66,27 +67,31 @@ void main() {
     when(() => repository.getUsers()).thenAnswer((_) async => const Right([]));
   });
 
-  group('RegisterPage', () {
-    Widget createWidget() => MultiProvider(
-          providers: [
-            ChangeNotifierProvider<RegisterViewModel>.value(
-              value: registerViewModel,
-            ),
-            Provider<AppConfig>.value(value: appConfig),
-          ],
-          child: MaterialApp(
-            navigatorKey: FakeNavigator.rootNavigatorKey,
-            home: const RegisterPage(),
-            onGenerateRoute: (settings) => MaterialPageRoute(
-              builder: (context) => const Scaffold(
-                body: Center(
-                  child: Text('Home'),
-                ),
+  Widget createWidget() => MultiProvider(
+        providers: [
+          ChangeNotifierProvider<RegisterViewModel>.value(
+            value: registerViewModel,
+          ),
+          FutureProvider<RegisterSemantics>(
+            create: (context) => RegisterSemantics.load(),
+            initialData: RegisterSemantics.fromJson({}),
+          ),
+          Provider<AppConfig>.value(value: appConfig),
+        ],
+        child: MaterialApp(
+          navigatorKey: FakeNavigator.rootNavigatorKey,
+          home: const RegisterPage(),
+          onGenerateRoute: (settings) => MaterialPageRoute(
+            builder: (context) => const Scaffold(
+              body: Center(
+                child: Text('Home'),
               ),
             ),
           ),
-        );
+        ),
+      );
 
+  group('RegisterPage', () {
     testWidgets('should displays all required elements',
         (WidgetTester tester) async {
       await tester.pumpWidget(createWidget());

@@ -14,6 +14,7 @@ class _MenuNavigationBarState extends State<MenuNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    final semantics = context.watch<MenuSemantics>();
     final state = context.watch<CartViewModel>().state;
     final products = state.cart?.products ?? [];
     final totalProducts = _getTotalProducts(products);
@@ -23,31 +24,71 @@ class _MenuNavigationBarState extends State<MenuNavigationBar> {
       destinations: [
         NavigationDestination(
           key: KeyValue.menuHomeIconBtn,
-          icon: const FakeIcon(Icons.home_outlined),
-          selectedIcon: const FakeIcon(Icons.home),
+          icon: Semantics(
+            label: semantics.homeItem.label,
+            sortKey: OrdinalSortKey(semantics.homeItem.order),
+            child: const FakeIcon(Icons.home_outlined),
+          ),
+          selectedIcon: Semantics(
+            label: semantics.homeItem.label,
+            sortKey: OrdinalSortKey(semantics.homeItem.order),
+            child: const FakeIcon(Icons.home),
+          ),
           label: StringValue.home,
         ),
         NavigationDestination(
           key: KeyValue.menuCatalogIconBtn,
-          icon: const FakeIcon(Icons.shopping_bag_outlined),
-          selectedIcon: const FakeIcon(Icons.shopping_bag),
+          icon: Semantics(
+            label: semantics.catalogItem.label,
+            sortKey: OrdinalSortKey(semantics.catalogItem.order),
+            child: const FakeIcon(Icons.shopping_bag_outlined),
+          ),
+          selectedIcon: Semantics(
+            label: semantics.catalogItem.label,
+            sortKey: OrdinalSortKey(semantics.catalogItem.order),
+            child: const FakeIcon(Icons.shopping_bag),
+          ),
           label: StringValue.catalog,
         ),
         NavigationDestination(
           key: KeyValue.menuSupportIconBtn,
-          icon: const FakeIcon(Icons.headset_mic_outlined),
-          selectedIcon: const FakeIcon(Icons.headset_mic),
+          icon: Semantics(
+            label: semantics.supportItem.label,
+            sortKey: OrdinalSortKey(semantics.supportItem.order),
+            child: const FakeIcon(Icons.headset_mic_outlined),
+          ),
+          selectedIcon: Semantics(
+            label: semantics.supportItem.label,
+            sortKey: OrdinalSortKey(semantics.supportItem.order),
+            child: const FakeIcon(Icons.headset_mic),
+          ),
           label: StringValue.support,
         ),
         NavigationDestination(
           key: KeyValue.menuCartIconBtn,
           icon: Badge(
-            label: FakeTextSmall(totalProducts.toString()),
-            child: const FakeIcon(Icons.shopping_cart_outlined),
+            label: Semantics(
+              label: semantics.cartItemCount.label,
+              sortKey: OrdinalSortKey(semantics.cartItemCount.order),
+              child: FakeTextSmall(totalProducts.toString()),
+            ),
+            child: Semantics(
+              label: semantics.cartItem.label,
+              sortKey: OrdinalSortKey(semantics.cartItem.order),
+              child: const FakeIcon(Icons.shopping_cart_outlined),
+            ),
           ),
           selectedIcon: Badge(
-            label: FakeTextSmall(totalProducts.toString()),
-            child: const FakeIcon(Icons.shopping_cart),
+            label: Semantics(
+              label: semantics.cartItemCount.label,
+              sortKey: OrdinalSortKey(semantics.cartItemCount.order),
+              child: FakeTextSmall(totalProducts.toString()),
+            ),
+            child: Semantics(
+              label: semantics.cartItem.label,
+              sortKey: OrdinalSortKey(semantics.cartItem.order),
+              child: const FakeIcon(Icons.shopping_cart),
+            ),
           ),
           label: StringValue.cart,
         ),

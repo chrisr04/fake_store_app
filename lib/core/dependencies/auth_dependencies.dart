@@ -21,4 +21,12 @@ final _authDependencies = [
       context.read<FakeAuthRepository>(),
     ),
   ),
+  FutureProvider<LoginSemantics>(
+    create: (context) => LoginSemantics.load(),
+    initialData: LoginSemantics.fromJson({}),
+  ),
+  FutureProvider<RegisterSemantics>(
+    create: (context) => RegisterSemantics.load(),
+    initialData: RegisterSemantics.fromJson({}),
+  ),
 ];
