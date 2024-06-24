@@ -8,15 +8,15 @@
         "order": 2.0
     },
     "addButton": {
-        "label": "Aumentar cantidad",
+        "label": "Aumentar cantidad en 1",
         "order": 3.0
     },
     "removeButton": {
-        "label": "Disminuir cantidad",
+        "label": "Disminuir cantidad en 1",
         "order": 4.0
     },
     "quantityInput": {
-        "label": "Modifica la cantidad",
+        "label": "Modificar la cantidad",
         "order": 5.0
     },
     "totalResume": {

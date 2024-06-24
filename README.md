@@ -187,6 +187,81 @@ AppConfig.getString('welcome');
 AppConfig.getImage('welcomeIllustrationPng');
 ```
 
+## Accesibilidad
+
+La accesibilidad es crucial para asegurar que nuestra aplicación sea utilizable por todas las personas, incluidas aquellas con discapacidades.
+
+### Títulos
+
+El texto debe ser legible y escalable. Envolvemos los widgets con `Semantics` para describir su propósito cuando sea necesario.
+
+```dart
+Semantics(
+  label: semantics.cartTitle.label, // Gestiona los productos de tu carrito
+  sortKey: OrdinalSortKey(semantics.cartTitle.order),
+  excludeSemantics: true,
+  focused: true,
+  child: Row(
+    children: [
+      const FakeIcon(
+        Icons.shopping_cart_outlined,
+        size: 32.0,
+      ),
+      const FakeSpacerS(axis: FakeSpacerAxis.x),
+      Flexible(
+        child: FakeTextHeading3(
+          StringValue.myCart, // Mi carrito
+          weight: FontWeight.w600,
+        ),
+      ),
+    ],
+  ),
+)
+```
+
+### Cards
+
+Las acciones deben estar bien descritas para que el usuario pueda ejecutarlas de forma efectiva. En este caso algunas cards fueron provistas con atributos que permiten añadir accesibilidad a sus elementos accionables.
+
+```dart
+FakeShoppingCartCard(
+  imageUrl: product.image,
+  title: product.title, // Camiseta roja
+  price: product.price,
+  deleteButtonText: StringValue.delete, // Eliminar
+  deleteSemanticsLabel: semantics.deleteButton.label, // Eliminar Camiseta roja
+  removeSemanticsLabel: semantics.removeButton.label, // Disminuir cantidad en 1
+  addSemanticsLabel: semantics.addButton.label, // Aumentar cantidad en 1
+  inputSemanticsLabel: semantics.quantityInput.label, // Modificar la cantidad
+  quantityValue: product.quantity.toString(),
+  onDeleteButtonPressed: () {
+    viewModel.onRemoveProduct(product.productId);
+  },
+  onQuantityChanged: (value) {},
+  onAddButtonPressed: () {},
+  onRemoveButtonPressed: () {},
+)
+```
+
+### Inputs y AppBars
+
+Los campos de entrada (FakeFormField) deben ser claramente identificables y tener etiquetas descriptivas. Ademas al combinarse con widgets como el AppBar las posibles acciones deben ser claras para brindar una experiencia fluida.
+
+```dart
+FakeSearchAppBar(
+  key: KeyValue.searchQueryInput,
+  hintText: StringValue.searchByNameOrDescription, // Busca por nombre o descripción...
+  showBackButton: true,
+  semanticLabel: semantics.searchBarHint.label, // Toca dos veces el ícono de lupa para realizar la busqueda
+  semanticsSortKey: OrdinalSortKey(semantics.searchBarHint.order),
+  semanticFocused: true,
+  onSubmit: viewModel.onSearchProducts,
+)
+```
+### Pruebas de Accesibilidad
+
+Es fundamental realizar pruebas de accesibilidad para verificar que todos los elementos sean accesibles. Usamos **TalkBack** en un emulador de Android para verificar la usabilidad de todas las vistas y garantizar su correcto funcionamiento de cara al usuario final.
+
 ## Diagrama de Flujo
 
 ![Diagrama de flujo Fake Store](https://github.com/chrisr04/fake_store_app/assets/47868395/8750dfc4-9da6-4623-895f-cbeb26e6803f)

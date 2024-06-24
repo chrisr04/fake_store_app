@@ -26,7 +26,8 @@ class CartProductList extends StatelessWidget {
               title: product.title,
               price: product.price,
               deleteButtonText: StringValue.delete,
-              deleteSemanticsLabel: semantics.deleteButton.label,
+              deleteSemanticsLabel:
+                  '${semantics.deleteButton.label} ${product.title}',
               removeSemanticsLabel: semantics.removeButton.label,
               addSemanticsLabel: semantics.addButton.label,
               inputSemanticsLabel: semantics.quantityInput.label,
