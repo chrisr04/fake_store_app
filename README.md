@@ -245,7 +245,7 @@ FakeShoppingCartCard(
 
 ### Inputs y AppBars
 
-Los campos de entrada (FakeFormField) deben ser claramente identificables y tener etiquetas descriptivas. Ademas al combinarse con widgets como el AppBar las posibles acciones deben ser claras para brindar una experiencia fluida.
+Los campos de entrada (FakeFormField) deben ser claramente identificables y tener etiquetas descriptivas. Además, al combinarse con widgets como el AppBar las posibles acciones deben ser claras para brindar una experiencia fluida.
 
 ```dart
 FakeSearchAppBar(
