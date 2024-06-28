@@ -11,7 +11,7 @@ class AddToCartFooter extends StatelessWidget {
     final isOnCart = cartViewModel.isProductAdded(product.id);
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).colorScheme.shadowVariant,

@@ -51,7 +51,9 @@ void main() {
           value: registerViewModel,
           child: const MaterialApp(
             home: Scaffold(
-              body: RegisterForm(),
+              body: SingleChildScrollView(
+                child: RegisterForm(),
+              ),
             ),
           ),
         ),
@@ -103,6 +105,13 @@ void main() {
       await tester.enterText(userNameFinder, 'john_doe');
       await tester.enterText(passwordFinder, 'password123');
 
+      await tester.scrollUntilVisible(
+        find.text(StringValue.signUp),
+        100.0,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pumpAndSettle();
+
       await tester.tap(find.text(StringValue.signUp));
       await tester.pump();
 
@@ -124,7 +133,9 @@ void main() {
           value: registerViewModel,
           child: const MaterialApp(
             home: Scaffold(
-              body: RegisterForm(),
+              body: SingleChildScrollView(
+                child: RegisterForm(),
+              ),
             ),
           ),
         ),
@@ -169,6 +180,13 @@ void main() {
       await tester.enterText(emailFinder, 'john.doe@example.com');
       await tester.enterText(phoneFinder, '1234567890');
       await tester.enterText(userNameFinder, 'john_doe');
+
+      await tester.scrollUntilVisible(
+        find.text(StringValue.signUp),
+        100.0,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pumpAndSettle();
 
       await tester.tap(find.text(StringValue.signUp));
       await tester.pump();

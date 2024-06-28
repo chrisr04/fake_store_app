@@ -12,7 +12,7 @@ class TotalCartFooter extends StatelessWidget {
     if (products.isEmpty) return const SizedBox.shrink();
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).colorScheme.shadowVariant,

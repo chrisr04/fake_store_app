@@ -32,7 +32,7 @@ class _HomeHeaderDelegate extends SliverPersistentHeaderDelegate {
           Container(
             width: double.infinity,
             height: 95.0,
-            color: Theme.of(context).colorScheme.surfaceVariant,
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
             padding: const EdgeInsets.symmetric(
               vertical: FakeSpacing.sm,
               horizontal: FakeSpacing.md,
